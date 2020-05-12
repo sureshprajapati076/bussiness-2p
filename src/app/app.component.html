@@ -192,15 +192,16 @@
 
                     </td>
                     <td style="border: none;" rowspan="5" colspan="8">
+                        <div *ngIf="P1==false">
+                            <button type="button" class="btn btn-success" [disabled]="P1==true" (click)="roll1()">Go
+                                GREEN</button>
+                        </div>
+                        <div *ngIf="P2==false">
+                            <span>&nbsp;&nbsp;&nbsp;</span>
 
-                        <button *ngIf="P1==false" type="button" class="btn btn-success" [disabled]="P1==true"
-                            (click)="roll1()">Go
-                            GREEN</button>
-                        <span>&nbsp;&nbsp;&nbsp;</span>
-                        <button *ngIf="P2==false" type="button" class="btn btn-primary" [disabled]="P2==true"
-                            (click)="roll2()">Go
-                            BLUE</button>
-
+                            <button type="button" class="btn btn-primary" [disabled]="P2==true" (click)="roll2()">Go
+                                BLUE</button>
+                        </div>
                         <div id="dice-box1"></div>
 
 
