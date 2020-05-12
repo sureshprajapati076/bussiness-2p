@@ -1,3 +1,452 @@
-<button (click)="roll()">Roll</button>
-{{result}}
-<div id="dice-box1"></div>
+<p>
+    {{showHomeOption}}{{showPayRent}}
+</p>
+<div class="container">
+
+    <div class="row">
+        <div class="col-8">
+            <table>
+
+                <tr class="horizontal">
+
+                    <td>
+
+                        <div *ngIf="Px.pos==27" class="dotRed"></div>
+                        <div *ngIf="Py.pos==27" class="dotBlue"></div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[26].ownedBy != 'bank' " [ngStyle]="{'background-color': data[26].ownedBy}"
+                            class="dotRedTicketTop">{{data[26].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==26" class="dotRed"></div>
+                            <div *ngIf="Py.pos==26" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[25].ownedBy != 'bank' " [ngStyle]="{'background-color': data[25].ownedBy}"
+                            class="dotRedTicketTop">{{data[25].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==25" class="dotRed"></div>
+                            <div *ngIf="Py.pos==25" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[24].ownedBy != 'bank' " [ngStyle]="{'background-color': data[24].ownedBy}"
+                            class="dotRedTicketTop">{{data[24].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==24" class="dotRed"></div>
+                            <div *ngIf="Py.pos==24" class="dotBlue"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf=" data[23].ownedBy != 'bank' " [ngStyle]="{'background-color': data[23].ownedBy}"
+                            class="dotRedTicketTop">{{data[23].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==23" class="dotRed"></div>
+                            <div *ngIf="Py.pos==23" class="dotBlue"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf=" data[22].ownedBy != 'bank' " [ngStyle]="{'background-color': data[22].ownedBy}"
+                            class="dotRedTicketTop">{{data[22].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==22" class="dotRed"></div>
+                            <div *ngIf="Py.pos==22" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[21].ownedBy != 'bank' " [ngStyle]="{'background-color': data[21].ownedBy}"
+                            class="dotRedTicketTop">{{data[21].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==21" class="dotRed"></div>
+                            <div *ngIf="Py.pos==21" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[20].ownedBy != 'bank' " [ngStyle]="{'background-color': data[20].ownedBy}"
+                            class="dotRedTicketTop">{{data[20].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==20" class="dotRed"></div>
+                            <div *ngIf="Py.pos==20" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[19].ownedBy != 'bank' " [ngStyle]="{'background-color': data[19].ownedBy}"
+                            class="dotRedTicketTop">{{data[19].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==19" class="dotRed"></div>
+                            <div *ngIf="Py.pos==19" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf="Px.pos==18" class="dotRed"></div>
+                        <div *ngIf="Py.pos==18" class="dotBlue"></div>
+
+                    </td>
+                </tr>
+                <tr class="vertical">
+                    <td>
+                        <div *ngIf=" data[28].ownedBy != 'bank' " [ngStyle]="{'background-color': data[28].ownedBy}"
+                            class="dotRedTicketLeft">{{data[28].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==28" class="dotRed"></div>
+                            <div *ngIf="Py.pos==28" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td rowspan="8" colspan="8">
+
+                        <div>Hello</div>
+                        <div>World!!!</div>
+                        <div>
+                            Player X: ${{Px.amount}}
+
+
+                        </div>
+                        <div>Player Y: ${{Py.amount}}</div>
+                        <!-- <button (click)="Px.pos=(Px.pos+1)%36;Py.pos=(Py.pos+1)%36;">Click</button> -->
+                        <button [disabled]="P1==true" (click)="roll1()">Roll RED</button>
+                        <button [disabled]="P2==true" (click)="roll2()">Roll BLUE</button>
+
+                        <div id="dice-box1"></div>
+
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[17].ownedBy != 'bank' " [ngStyle]="{'background-color': data[17].ownedBy}"
+                            class="dotRedTicketRight">{{data[17].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==17" class="dotRed"></div>
+                            <div *ngIf="Py.pos==17" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr class="vertical">
+                    <td>
+
+                        <div *ngIf=" data[29].ownedBy != 'bank' " [ngStyle]="{'background-color': data[29].ownedBy}"
+                            class="dotRedTicketLeft">{{data[29].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==29" class="dotRed"></div>
+                            <div *ngIf="Py.pos==29" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[16].ownedBy != 'bank' " [ngStyle]="{'background-color': data[16].ownedBy}"
+                            class="dotRedTicketRight">{{data[16].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==16" class="dotRed"></div>
+                            <div *ngIf="Py.pos==16" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr class="vertical">
+                    <td>
+                        <div *ngIf=" data[30].ownedBy != 'bank' " [ngStyle]="{'background-color': data[30].ownedBy}"
+                            class="dotRedTicketLeft">{{data[30].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==30" class="dotRed"></div>
+                            <div *ngIf="Py.pos==30" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[15].ownedBy != 'bank' " [ngStyle]="{'background-color': data[15].ownedBy}"
+                            class="dotRedTicketRight">{{data[15].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==15" class="dotRed"></div>
+                            <div *ngIf="Py.pos==15" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr class="vertical">
+                    <td>
+                        <div *ngIf=" data[31].ownedBy != 'bank' " [ngStyle]="{'background-color': data[31].ownedBy}"
+                            class="dotRedTicketLeft">{{data[31].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==31" class="dotRed"></div>
+                            <div *ngIf="Py.pos==31" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[14].ownedBy != 'bank' " [ngStyle]="{'background-color': data[14].ownedBy}"
+                            class="dotRedTicketRight">{{data[14].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==14" class="dotRed"></div>
+                            <div *ngIf="Py.pos==14" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr class="vertical">
+                    <td>
+                        <div *ngIf=" data[32].ownedBy != 'bank' " [ngStyle]="{'background-color': data[32].ownedBy}"
+                            class="dotRedTicketLeft">{{data[32].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==32" class="dotRed"></div>
+                            <div *ngIf="Py.pos==32" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[13].ownedBy != 'bank' " [ngStyle]="{'background-color': data[13].ownedBy}"
+                            class="dotRedTicketRight">{{data[13].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==13" class="dotRed"></div>
+                            <div *ngIf="Py.pos==13" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr class="vertical">
+                    <td>
+                        <div *ngIf=" data[33].ownedBy != 'bank' " [ngStyle]="{'background-color': data[33].ownedBy}"
+                            class="dotRedTicketLeft">{{data[33].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==33" class="dotRed"></div>
+                            <div *ngIf="Py.pos==33" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[12].ownedBy != 'bank' " [ngStyle]="{'background-color': data[12].ownedBy}"
+                            class="dotRedTicketRight">{{data[12].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==12" class="dotRed"></div>
+                            <div *ngIf="Py.pos==12" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr class="vertical">
+                    <td>
+                        <div *ngIf=" data[34].ownedBy != 'bank' " [ngStyle]="{'background-color': data[34].ownedBy}"
+                            class="dotRedTicketLeft">{{data[34].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==34" class="dotRed"></div>
+                            <div *ngIf="Py.pos==34" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[11].ownedBy != 'bank' " [ngStyle]="{'background-color': data[11].ownedBy}"
+                            class="dotRedTicketRight">{{data[11].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==11" class="dotRed"></div>
+                            <div *ngIf="Py.pos==11" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr class="vertical">
+                    <td>
+                        <div *ngIf=" data[35].ownedBy != 'bank' " [ngStyle]="{'background-color': data[35].ownedBy}"
+                            class="dotRedTicketLeft">{{data[35].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==35" class="dotRed"></div>
+                            <div *ngIf="Py.pos==35" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[10].ownedBy != 'bank' " [ngStyle]="{'background-color': data[10].ownedBy}"
+                            class="dotRedTicketRight">{{data[10].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==10" class="dotRed"></div>
+                            <div *ngIf="Py.pos==10" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr class="horizontal">
+                    <td>
+                        <div *ngIf="Px.pos==0" class="dotRed"></div>
+                        <div *ngIf="Py.pos==0" class="dotBlue"></div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[1].ownedBy != 'bank' " [ngStyle]="{'background-color': data[1].ownedBy}"
+                            class="dotRedTicketBottom">{{data[1].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==1" class="dotRed"></div>
+                            <div *ngIf="Py.pos==1" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[2].ownedBy != 'bank' " [ngStyle]="{'background-color': data[2].ownedBy}"
+                            class="dotRedTicketBottom">{{data[2].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==2" class="dotRed"></div>
+                            <div *ngIf="Py.pos==2" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[3].ownedBy != 'bank' " [ngStyle]="{'background-color': data[3].ownedBy}"
+                            class="dotRedTicketBottom">{{data[3].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==3" class="dotRed"></div>
+                            <div *ngIf="Py.pos==3" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[4].ownedBy != 'bank' " [ngStyle]="{'background-color': data[4].ownedBy}"
+                            class="dotRedTicketBottom">{{data[4].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==4" class="dotRed"></div>
+                            <div *ngIf="Py.pos==4" class="dotBlue"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf=" data[5].ownedBy != 'bank' " [ngStyle]="{'background-color': data[5].ownedBy}"
+                            class="dotRedTicketBottom">{{data[5].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==5" class="dotRed"></div>
+                            <div *ngIf="Py.pos==5" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[6].ownedBy != 'bank' " [ngStyle]="{'background-color': data[6].ownedBy}"
+                            class="dotRedTicketBottom">{{data[6].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==6" class="dotRed"></div>
+                            <div *ngIf="Py.pos==6" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[7].ownedBy != 'bank' " [ngStyle]="{'background-color': data[7].ownedBy}"
+                            class="dotRedTicketBottom">{{data[7].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==7" class="dotRed"></div>
+                            <div *ngIf="Py.pos==7" class="dotBlue"></div>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div *ngIf=" data[8].ownedBy != 'bank' " [ngStyle]="{'background-color': data[8].ownedBy}"
+                            class="dotRedTicketBottom">{{data[8].house}}</div>
+                        <div>
+                            &nbsp;
+                            <div *ngIf="Px.pos==8" class="dotRed"></div>
+                            <div *ngIf="Py.pos==8" class="dotBlue"></div>
+                        </div>
+                    </td>
+                    <td>
+
+                        <div *ngIf="Px.pos==9" class="dotRed"></div>
+                        <div *ngIf="Py.pos==9" class="dotBlue"></div>
+
+                    </td>
+                </tr>
+
+
+
+
+
+            </table>
+        </div>
+        <div class="col-4">
+
+            <div *ngIf="hideBoth==false; else ShowPlayerOptions">
+
+            </div>
+            <ng-template #ShowPlayerOptions>
+
+                <div *ngIf="turn==false; else PlayerY">
+                    <button [disabled]="checkIfOwnedByX()" (click)="buyX()">Buy This Land RED</button>
+                    <button [disabled]="!showHomeOption" (click)="buildHouseX()">Build House</button>
+                    <button [disabled]="!showPayRent" (click)="payRentToY()">Pay Rent</button>
+                    <select>
+                        <option>
+                            Select Red Property
+                        </option>
+                        <option *ngFor="let land of Px.ownedLand">
+                            {{land.name}} ${{land.price}}
+                        </option>
+                    </select>
+                </div>
+                <ng-template #PlayerY>
+                    <button [disabled]="checkIfOwnedByY()" (click)="buyY()">Buy This Land BLUE</button>
+                    <button [disabled]="!showHomeOption" (click)="buildHouseY()">Build House</button>
+                    <button [disabled]="!showPayRent" (click)="payRentToX()">Pay Rent</button>
+
+                    <select>
+                        <option>
+                            Select Blue Property
+                        </option>
+                        <option *ngFor="let land of Py.ownedLand">
+                            {{land.name}} ${{land.price}}
+                        </option>
+                    </select>
+                </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+                <button (click)="finish()">Transaction Complete</button>
+            </ng-template>
+
+
+
+        </div>
+    </div>
+</div>
+<p>
+
+</p>
