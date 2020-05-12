@@ -108,24 +108,19 @@
                         </div>
 
                     </td>
-                    <td rowspan="8" colspan="8">
+
+                    <td style="border: none;" rowspan="3" colspan="8">
 
                         <div>Hello</div>
                         <div>World!!!</div>
                         <div>
-                            Player X: ${{Px.amount}}
+                            Player Green: ${{Px.amount}}
 
 
                         </div>
-                        <div>Player Y: ${{Py.amount}}</div>
+                        <div>Player Blue: ${{Py.amount}}</div>
                         <!-- <button (click)="Px.pos=(Px.pos+1)%36;Py.pos=(Py.pos+1)%36;">Click</button> -->
-                        <button type="button" class="btn btn-success" [disabled]="P1==true" (click)="roll1()">Roll
-                            GREEN</button>
-                        <span>&nbsp;&nbsp;&nbsp;</span>
-                        <button type="button" class="btn btn-primary" [disabled]="P2==true" (click)="roll2()">Roll
-                            BLUE</button>
 
-                        <div id="dice-box1"></div>
 
 
                     </td>
@@ -194,6 +189,21 @@
                             <div *ngIf="Px.pos==31" class="dotRed"></div>
                             <div *ngIf="Py.pos==31" class="dotBlue"></div>
                         </div>
+
+                    </td>
+                    <td style="border: none;" rowspan="5" colspan="8">
+
+                        <button *ngIf="P1==false" type="button" class="btn btn-success" [disabled]="P1==true"
+                            (click)="roll1()">Go
+                            GREEN</button>
+                        <span>&nbsp;&nbsp;&nbsp;</span>
+                        <button *ngIf="P2==false" type="button" class="btn btn-primary" [disabled]="P2==true"
+                            (click)="roll2()">Go
+                            BLUE</button>
+
+                        <div id="dice-box1"></div>
+
+
 
                     </td>
                     <td style=" background-size: 100% 100%;background-image: url('assets/pics/14.png');">
@@ -399,13 +409,17 @@
             <ng-template #ShowPlayerOptions>
 
                 <div *ngIf="turn==false; else PlayerY">
-                    <button type="button" class="btn btn-success" [disabled]="checkIfOwnedByX()" (click)="buyX()">Buy
-                        This Property</button><br /><br />
-                    <button type="button" class="btn btn-success" [disabled]="!showHomeOption"
-                        (click)="buildHouseX()">Build House</button><br /><br />
-                    <button type="button" class="btn btn-success" [disabled]="!showPayRent" (click)="payRentToY()">Pay
-                        Rent</button><br /><br />
-                    <div class="btn-group">
+                    <div style="padding-bottom: 10px;" *ngIf="!checkIfOwnedByX()">
+                        <button type="button" class="btn btn-success" [disabled]="checkIfOwnedByX()"
+                            (click)="buyX()">Buy
+                            This Property</button></div>
+                    <div style="padding-bottom: 10px;" *ngIf="showHomeOption"><button type="button"
+                            class="btn btn-success" [disabled]="!showHomeOption" (click)="buildHouseX()">Build
+                            House</button></div>
+                    <div style="padding-bottom: 10px;" *ngIf="showPayRent"> <button type="button"
+                            class="btn btn-success" [disabled]="!showPayRent" (click)="payRentToY()">Pay
+                            Rent</button></div>
+                    <div style="padding-bottom: 10px;" class="btn-group">
                         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Select Green Property
@@ -417,20 +431,23 @@
 
                         </div>
                     </div>
-                    <br /><br />
+
 
                 </div>
                 <ng-template #PlayerY>
-                    <button type="button" class="btn btn-primary" [disabled]="checkIfOwnedByY()" (click)="buyY()">Buy
-                        This Property</button><br /><br />
-                    <button type="button" class="btn btn-primary" [disabled]="!showHomeOption"
-                        (click)="buildHouseY()">Build House</button><br /><br />
-                    <button type="button" class="btn btn-primary" [disabled]="!showPayRent" (click)="payRentToX()">Pay
-                        Rent</button><br /><br />
+                    <div style="padding-bottom: 10px;" *ngIf="!checkIfOwnedByY()"><button type="button"
+                            class="btn btn-primary" [disabled]="checkIfOwnedByY()" (click)="buyY()">Buy
+                            This Property</button></div>
+                    <div style="padding-bottom: 10px;" *ngIf="showHomeOption"> <button type="button"
+                            class="btn btn-primary" [disabled]="!showHomeOption" (click)="buildHouseY()">Build
+                            House</button></div>
+                    <div style="padding-bottom: 10px;" *ngIf="showPayRent"> <button type="button"
+                            class="btn btn-primary" [disabled]="!showPayRent" (click)="payRentToX()">Pay
+                            Rent</button></div>
 
 
 
-                    <div class="btn-group">
+                    <div style="padding-bottom: 10px;" class="btn-group">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Select Blue Property
@@ -442,7 +459,7 @@
 
                         </div>
                     </div>
-                    <br /><br />
+
                 </ng-template>
 
 
@@ -454,9 +471,9 @@
 
 
 
-
-                <button type="button" class="btn btn-warning" (click)="finish()">No Transaction
-                </button>
+                <div style="padding-bottom: 10px;">
+                    <button type="button" class="btn btn-warning" (click)="finish()">No Transaction
+                    </button></div>
             </ng-template>
 
 
