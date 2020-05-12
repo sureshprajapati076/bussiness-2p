@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
   turn: boolean;
 
   ngOnInit() {
-    this.hideBoth = true;
+    this.hideBoth = false;
     this.noLand = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32];
     this.noHouse = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32, 12, 14, 23, 24, 31];
     this.turn = true;
