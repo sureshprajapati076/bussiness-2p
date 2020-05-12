@@ -29,9 +29,9 @@ export class Land {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'customjs';
+  title = 'Business-2 Player';
   result: number
-  colorGreen: String
+
 
   Px: Player;
   Py: Player;
@@ -39,7 +39,8 @@ export class AppComponent implements OnInit {
 
   P2: boolean
   P1: boolean
-
+  noLand = []
+  noHouse = []
   data: Array<Land>
   showHomeOption: boolean
   showPayRent: boolean
@@ -48,8 +49,9 @@ export class AppComponent implements OnInit {
   turn: boolean;
 
   ngOnInit() {
-    this.hideBoth = false;
-
+    this.hideBoth = true;
+    this.noLand = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32];
+    this.noHouse = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32, 12, 14, 23, 24, 31];
     this.turn = true;
     this.Px = new Player();
     this.Py = new Player();
@@ -65,6 +67,13 @@ export class AppComponent implements OnInit {
   }
   buyX() {
     let land = this.data[this.Px.pos]
+
+    if (this.noLand.indexOf(this.Px.pos) >= 0) { this.Px.amount -= land.price; return; }
+
+    if (land.ownedBy == 'blue' || this.Px.completeOneCircle == false) {
+      return;
+    }
+
     land.ownedBy = 'red';
 
     if (this.Px.ownedLand.indexOf(land) == -1) {
@@ -78,6 +87,10 @@ export class AppComponent implements OnInit {
 
   buyY() {
     let land = this.data[this.Py.pos]
+    if (this.noLand.indexOf(this.Py.pos) >= 0) { this.Py.amount -= land.price; return; }
+    if (land.ownedBy == 'red' || this.Py.completeOneCircle == false) {
+      return;
+    }
     land.ownedBy = 'blue';
     if (this.Py.ownedLand.indexOf(land) == -1) {
       this.Py.ownedLand.push(land)
@@ -89,7 +102,8 @@ export class AppComponent implements OnInit {
   }
   buildHouseX() {
     let land = this.data[this.Px.pos]
-    if (this.Px.ownedLand.indexOf(land) >= 0) {
+    if (this.noHouse.indexOf(this.Px.pos) >= 0) return;
+    if (this.Px.ownedLand.indexOf(land) >= 0 && land.house != 'H') {
       land.house = 'H';
       this.Px.amount -= land.price * 2;
       this.finish();
@@ -99,7 +113,8 @@ export class AppComponent implements OnInit {
   }
   buildHouseY() {
     let land = this.data[this.Py.pos]
-    if (this.Py.ownedLand.indexOf(land) >= 0) {
+    if (this.noHouse.indexOf(this.Py.pos) >= 0) return;
+    if (this.Py.ownedLand.indexOf(land) >= 0 && land.house != 'H') {
       land.house = 'H';
       this.Py.amount -= land.price * 2;
       this.finish();
@@ -146,6 +161,7 @@ export class AppComponent implements OnInit {
     }
     this.Py.amount += payAmount;
     this.Px.amount -= payAmount;
+    this.showPayRent = false;
     this.finish();
   }
   payRentToX() {
@@ -156,10 +172,14 @@ export class AppComponent implements OnInit {
     }
     this.Px.amount += payAmount;
     this.Py.amount -= payAmount;
+    this.showPayRent = false;
     this.finish();
   }
 
   finish() {
+    if (this.showPayRent == true) {
+      return;
+    }
 
     if (this.turn == true) {
       this.P2 = true;
