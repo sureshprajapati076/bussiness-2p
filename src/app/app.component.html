@@ -119,8 +119,11 @@
                         </div>
                         <div>Player Y: ${{Py.amount}}</div>
                         <!-- <button (click)="Px.pos=(Px.pos+1)%36;Py.pos=(Py.pos+1)%36;">Click</button> -->
-                        <button [disabled]="P1==true" (click)="roll1()">Roll RED</button>
-                        <button [disabled]="P2==true" (click)="roll2()">Roll BLUE</button>
+                        <button type="button" class="btn btn-success" [disabled]="P1==true" (click)="roll1()">Roll
+                            GREEN</button>
+                        <span>&nbsp;&nbsp;&nbsp;</span>
+                        <button type="button" class="btn btn-primary" [disabled]="P2==true" (click)="roll2()">Roll
+                            BLUE</button>
 
                         <div id="dice-box1"></div>
 
@@ -396,31 +399,50 @@
             <ng-template #ShowPlayerOptions>
 
                 <div *ngIf="turn==false; else PlayerY">
-                    <button [disabled]="checkIfOwnedByX()" (click)="buyX()">Buy This Land RED</button>
-                    <button [disabled]="!showHomeOption" (click)="buildHouseX()">Build House</button>
-                    <button [disabled]="!showPayRent" (click)="payRentToY()">Pay Rent</button>
-                    <select>
-                        <option>
-                            Select Red Property
-                        </option>
-                        <option *ngFor="let land of Px.ownedLand">
-                            {{land.name}} ${{land.price}}
-                        </option>
-                    </select>
+                    <button type="button" class="btn btn-success" [disabled]="checkIfOwnedByX()" (click)="buyX()">Buy
+                        This Property</button><br /><br />
+                    <button type="button" class="btn btn-success" [disabled]="!showHomeOption"
+                        (click)="buildHouseX()">Build House</button><br /><br />
+                    <button type="button" class="btn btn-success" [disabled]="!showPayRent" (click)="payRentToY()">Pay
+                        Rent</button><br /><br />
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Select Green Property
+                        </button>
+                        <div *ngIf="Px.ownedLand.length!=0" class="dropdown-menu">
+
+                            <a class="dropdown-item" href="#" *ngFor="let land of Px.ownedLand"> {{land.name}}
+                                ${{land.price}}</a>
+
+                        </div>
+                    </div>
+                    <br /><br />
+
                 </div>
                 <ng-template #PlayerY>
-                    <button [disabled]="checkIfOwnedByY()" (click)="buyY()">Buy This Land BLUE</button>
-                    <button [disabled]="!showHomeOption" (click)="buildHouseY()">Build House</button>
-                    <button [disabled]="!showPayRent" (click)="payRentToX()">Pay Rent</button>
+                    <button type="button" class="btn btn-primary" [disabled]="checkIfOwnedByY()" (click)="buyY()">Buy
+                        This Property</button><br /><br />
+                    <button type="button" class="btn btn-primary" [disabled]="!showHomeOption"
+                        (click)="buildHouseY()">Build House</button><br /><br />
+                    <button type="button" class="btn btn-primary" [disabled]="!showPayRent" (click)="payRentToX()">Pay
+                        Rent</button><br /><br />
 
-                    <select>
-                        <option>
+
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Select Blue Property
-                        </option>
-                        <option *ngFor="let land of Py.ownedLand">
-                            {{land.name}} ${{land.price}}
-                        </option>
-                    </select>
+                        </button>
+                        <div *ngIf="Py.ownedLand.length!=0" class="dropdown-menu">
+
+                            <a class="dropdown-item" href="#" *ngFor="let land of Py.ownedLand"> {{land.name}}
+                                ${{land.price}}</a>
+
+                        </div>
+                    </div>
+                    <br /><br />
                 </ng-template>
 
 
@@ -433,7 +455,8 @@
 
 
 
-                <button (click)="finish()">Transaction Complete</button>
+                <button type="button" class="btn btn-success" (click)="finish()">Transaction
+                    Complete</button>
             </ng-template>
 
 

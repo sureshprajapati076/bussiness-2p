@@ -11,7 +11,7 @@ export class Player {
   constructor() {
     this.pos = 0;
     this.ownedLand = [];
-    this.amount = 12000;
+    this.amount = 40000;
     this.completeOneCircle = false;
   }
 
@@ -68,13 +68,13 @@ export class AppComponent implements OnInit {
   buyX() {
     let land = this.data[this.Px.pos]
 
-    if (this.noLand.indexOf(this.Px.pos) >= 0) { this.Px.amount -= land.price; return; }
+    if (this.noLand.indexOf(this.Px.pos) >= 0) { this.Px.amount -= land.price; this.finish(); return; }
 
     if (land.ownedBy == 'blue' || this.Px.completeOneCircle == false) {
       return;
     }
 
-    land.ownedBy = 'red';
+    land.ownedBy = 'green';
 
     if (this.Px.ownedLand.indexOf(land) == -1) {
 
@@ -87,8 +87,8 @@ export class AppComponent implements OnInit {
 
   buyY() {
     let land = this.data[this.Py.pos]
-    if (this.noLand.indexOf(this.Py.pos) >= 0) { this.Py.amount -= land.price; return; }
-    if (land.ownedBy == 'red' || this.Py.completeOneCircle == false) {
+    if (this.noLand.indexOf(this.Py.pos) >= 0) { this.Py.amount -= land.price; this.finish(); return; }
+    if (land.ownedBy == 'green' || this.Py.completeOneCircle == false) {
       return;
     }
     land.ownedBy = 'blue';
