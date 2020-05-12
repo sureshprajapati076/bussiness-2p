@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.hideBoth = false;
     this.noLand = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32];
-    this.noHouse = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32, 12, 14, 23, 24, 31];
+    this.noHouse = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32, 12, 13, 14, 23, 24, 31, 33];
     this.turn = true;
     this.Px = new Player();
     this.Py = new Player();
