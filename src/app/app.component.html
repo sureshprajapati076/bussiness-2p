@@ -114,11 +114,11 @@
                         <div>Hello</div>
                         <div>World!!!</div>
                         <div>
-                            Player Green: ${{Px.amount}}
+                            Player Green: ${{Px.amount|number : '.2-2'}}
 
 
                         </div>
-                        <div>Player Blue: ${{Py.amount}}</div>
+                        <div>Player Blue: ${{Py.amount|number : '.2-2'}}</div>
                         <!-- <button (click)="Px.pos=(Px.pos+1)%36;Py.pos=(Py.pos+1)%36;">Click</button> -->
 
 
@@ -192,15 +192,17 @@
 
                     </td>
                     <td style="border: none;" rowspan="5" colspan="8">
+                        <div *ngIf="turn==true; else goblue">
+                            <button type="button" class="btn btn-success" [disabled]="P1==true" (click)="roll1()">Go
+                                GREEN</button>
+                        </div>
+                        <ng-template #goblue>
 
-                        <button type="button" class="btn btn-success" [disabled]="P1==true" (click)="roll1()">Go
-                            GREEN</button>
 
 
-                        <span>&nbsp;&nbsp;&nbsp;</span>
-
-                        <button type="button" class="btn btn-primary" [disabled]="P2==true" (click)="roll2()">Go
-                            BLUE</button>
+                            <button type="button" class="btn btn-primary" [disabled]="P2==true" (click)="roll2()">Go
+                                BLUE</button>
+                        </ng-template>
 
                         <div id="dice-box1"></div>
 
@@ -420,15 +422,36 @@
                     <div style="padding-bottom: 10px;" *ngIf="showPayRent"> <button type="button"
                             class="btn btn-success" [disabled]="!showPayRent" (click)="payRentToY()">Pay
                             Rent</button></div>
-                    <div style="padding-bottom: 10px;" class="btn-group">
+                    <div *ngIf="Px.ownedLand.length>0" style="padding-bottom: 10px;" class="btn-group">
                         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            Select Green Property
+                            View / Sell Properties
                         </button>
-                        <div *ngIf="Px.ownedLand.length!=0" class="dropdown-menu">
+                        <div style="max-height: 500px; overflow: scroll;" class="dropdown-menu">
+                            <div class="dropdown-item">
+                                <div style="background-color: cornsilk;">Your Properties List</div>
+                            </div>
+                            <div style="cursor: pointer; " class="dropdown-item" *ngFor="let land of Px.ownedLand">
+                                <div> {{land.name}}
+                                    ${{land.price|number : '.2-2'}}</div>
+                                <div *ngIf="land.house.toString()!=''" style="margin: 0 0 2px 15px;">
+                                    <button (click)="sellProperty('RMV_HOUSE_G',land)"
+                                        class="btn btn-primary btn-sm">Remove
+                                        House (${{land.price * 1.8|number : '.2-2'}})</button></div>
+                                <div style="margin: 0 0 2px 15px;"> <button (click)="sellProperty('SELL_BANK_G',land)"
+                                        class="btn btn-warning btn-sm">Sell To
+                                        Bank
+                                        (${{(land.house.toString()!=''?land.price*2.7:land.price*0.9)|number : '.2-2'}})</button>
+                                </div>
 
-                            <a class="dropdown-item" href="#" *ngFor="let land of Px.ownedLand"> {{land.name}}
-                                ${{land.price}}</a>
+                                <div style="margin: 0 0 2px 15px;"><button (click)="sellProperty('SELL_B',land)"
+                                        class="btn btn-primary btn-sm">Sell To
+                                        Blue
+                                        (${{(land.house.toString()!=''?land.price*3:land.price)|number : '.2-2'}})</button>
+                                </div>
+                                <hr />
+                            </div>
+
 
                         </div>
                     </div>
@@ -448,15 +471,36 @@
 
 
 
-                    <div style="padding-bottom: 10px;" class="btn-group">
+                    <div *ngIf="Py.ownedLand.length>0" style="padding-bottom: 10px;" class="btn-group">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            Select Blue Property
+                            View / Sell Properties
                         </button>
-                        <div *ngIf="Py.ownedLand.length!=0" class="dropdown-menu">
+                        <div style="max-height: 500px; overflow: scroll;" *ngIf="Py.ownedLand.length!=0"
+                            class="dropdown-menu">
+                            <div class="dropdown-item">
+                                <div style="background-color: cornsilk;">Your Properties List</div>
+                            </div>
+                            <div style="cursor: pointer; " class="dropdown-item" *ngFor="let land of Py.ownedLand">
+                                <div> {{land.name}}
+                                    ${{land.price|number : '.2-2'}}</div>
+                                <div *ngIf="land.house.toString()!=''" style="margin: 0 0 2px 15px;"><button
+                                        (click)="sellProperty('RMV_HOUSE_B',land)" class="btn btn-primary btn-sm">Remove
+                                        House (${{land.price * 1.8|number : '.2-2'}})</button></div>
+                                <div style="margin: 0 0 2px 15px;"> <button (click)="sellProperty('SELL_BANK_B',land)"
+                                        class="btn btn-warning btn-sm">Sell To
+                                        Bank
+                                        (${{(land.house.toString()!=''?land.price*2.7:land.price*0.9)|number : '.2-2'}})</button>
+                                </div>
 
-                            <a class="dropdown-item" href="#" *ngFor="let land of Py.ownedLand"> {{land.name}}
-                                ${{land.price}}</a>
+                                <div style="margin: 0 0 2px 15px;"><button (click)="sellProperty('SELL_G',land)"
+                                        class="btn btn-success btn-sm">Sell To
+                                        Green
+                                        (${{(land.house.toString()!=''?land.price*3:land.price)|number : '.2-2'}})</button>
+                                </div>
+                                <hr />
+                            </div>
+
 
                         </div>
                     </div>

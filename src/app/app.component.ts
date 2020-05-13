@@ -12,7 +12,7 @@ export class Player {
     this.pos = 0;
     this.ownedLand = [];
     this.amount = 40000;
-    this.completeOneCircle = false;
+    this.completeOneCircle = true;
   }
 
 }
@@ -76,6 +76,7 @@ export class AppComponent implements OnInit {
 
     land.ownedBy = 'green';
 
+
     if (this.Px.ownedLand.indexOf(land) == -1) {
 
       this.Px.ownedLand.push(land)
@@ -85,6 +86,7 @@ export class AppComponent implements OnInit {
 
   }
 
+
   buyY() {
     let land = this.data[this.Py.pos]
     if (this.noLand.indexOf(this.Py.pos) >= 0) { this.Py.amount -= land.price; this.finish(); return; }
@@ -92,12 +94,104 @@ export class AppComponent implements OnInit {
       return;
     }
     land.ownedBy = 'blue';
+
     if (this.Py.ownedLand.indexOf(land) == -1) {
       this.Py.ownedLand.push(land)
       this.Py.amount -= land.price;
     }
     this.finish();
 
+
+  }
+  sellProperty(option, land: Land) {
+    let index;
+
+    switch (option) {
+      case 'RMV_HOUSE_G':
+        index = this.Px.ownedLand.indexOf(land);
+        if (index > -1) {
+          land.house = '';
+          this.Px.amount += land.price * 1.8;
+
+        }
+        break;
+      case 'SELL_BANK_G':
+        index = this.Px.ownedLand.indexOf(land);
+        if (index > -1) {
+          if (land.house == 'H') {
+            this.Px.amount += land.price * 2.7;
+          } else {
+            this.Px.amount += land.price * 0.9;
+          }
+          land.ownedBy = 'bank'
+
+
+          this.Px.ownedLand.splice(index, 1);
+        }
+        break;
+      case 'SELL_B':
+        index = this.Px.ownedLand.indexOf(land);
+        if (index > -1) {
+          if (land.house == 'H') {
+            if (this.Py.amount < land.price * 3) return;
+            this.Px.amount += land.price * 3;
+            this.Py.amount -= land.price * 3;
+          } else {
+            if (this.Py.amount < land.price) return;
+            this.Px.amount += land.price;
+            this.Py.amount -= land.price;
+          }
+
+          land.ownedBy = 'blue'
+
+
+          this.Px.ownedLand.splice(index, 1);
+          this.Py.ownedLand.push(land);
+        }
+        break;
+      case 'RMV_HOUSE_B':
+        index = this.Py.ownedLand.indexOf(land);
+        if (index > -1) {
+          land.house = '';
+          this.Py.amount += land.price * 1.8;
+
+        }
+        break;
+      case 'SELL_BANK_B':
+        index = this.Py.ownedLand.indexOf(land);
+        if (index > -1) {
+          if (land.house == 'H') {
+            this.Py.amount += land.price * 2.7;
+          } else {
+            this.Py.amount += land.price * 0.9;
+          }
+          land.ownedBy = 'bank'
+
+          this.Py.ownedLand.splice(index, 1);
+        }
+        break;
+      case 'SELL_G':
+        index = this.Py.ownedLand.indexOf(land);
+        if (index > -1) {
+          if (land.house == 'H') {
+            if (this.Px.amount < land.price * 3) return;
+            this.Py.amount += land.price * 3;
+            this.Px.amount -= land.price * 3;
+          } else {
+            if (this.Px.amount < land.price) return;
+            this.Py.amount += land.price;
+            this.Px.amount -= land.price;
+          }
+
+          land.ownedBy = 'green'
+
+
+          this.Py.ownedLand.splice(index, 1);
+          this.Px.ownedLand.push(land);
+        }
+        break;
+      default:
+    }
 
   }
   buildHouseX() {
@@ -178,6 +272,10 @@ export class AppComponent implements OnInit {
 
   finish() {
     if (this.showPayRent == true) {
+      return;
+    }
+    if (this.Px.amount < 0 || this.Py.amount < 0) {
+      alert('You Are Out Of Money');
       return;
     }
 
