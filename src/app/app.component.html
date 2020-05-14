@@ -406,7 +406,7 @@
         </div>
         <div class="col-4">
 
-            <div *ngIf="hideBoth==false; else ShowPlayerOptions">
+            <div *ngIf="hideBoth==true; else ShowPlayerOptions">
 
             </div>
             <ng-template #ShowPlayerOptions>
@@ -524,8 +524,12 @@
 
 
         </div>
-    </div>
-</div>
-<p>
 
-</p>
+    </div>
+    <div class="row">
+        <div class="col-8 text-muted text-center">
+            Project on May 12, 2020
+        </div>
+    </div>
+
+</div>

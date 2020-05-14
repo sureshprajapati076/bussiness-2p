@@ -12,7 +12,7 @@ export class Player {
     this.pos = 0;
     this.ownedLand = [];
     this.amount = 40000;
-    this.completeOneCircle = true;
+    this.completeOneCircle = false;
   }
 
 }
@@ -36,7 +36,8 @@ export class AppComponent implements OnInit {
   Px: Player;
   Py: Player;
 
-
+  noActionNeeded = []
+  rewardOrTaxes = []
   P2: boolean
   P1: boolean
   noLand = []
@@ -49,9 +50,43 @@ export class AppComponent implements OnInit {
   turn: boolean;
 
   ngOnInit() {
-    this.hideBoth = false;
     this.noLand = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32];
     this.noHouse = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32, 12, 13, 14, 23, 24, 31, 33];
+    this.noActionNeeded = [1, 7, 18, 20, 27, 28];
+    this.rewardOrTaxes = [0, 5, 9, 32]
+
+
+    if (sessionStorage.getItem('gameData')) {
+
+
+      let gameInitialState = JSON.parse(sessionStorage.getItem('gameData'))
+
+      this.hideBoth = gameInitialState.hideBoth;
+
+      this.turn = gameInitialState.turn;
+      this.Px = gameInitialState.Px;
+      this.Py = gameInitialState.Py;
+
+      this.P1 = gameInitialState.P1;
+      this.P2 = gameInitialState.P2;
+      this.showHomeOption = gameInitialState.showHomeOption;
+      this.showPayRent = gameInitialState.showPayRent;
+      this.data = gameInitialState.data;
+      if (this.Px.completeOneCircle == false || this.Py.completeOneCircle == false) {
+        this.reset();
+      }
+
+    } else {
+      this.reset();
+    }
+
+
+  }
+  reset() {
+
+
+    this.hideBoth = true;
+
     this.turn = true;
     this.Px = new Player();
     this.Py = new Player();
@@ -63,12 +98,11 @@ export class AppComponent implements OnInit {
     this.data = GameInitialData.data;
 
 
-
   }
   buyX() {
     let land = this.data[this.Px.pos]
 
-    if (this.noLand.indexOf(this.Px.pos) >= 0) { this.Px.amount -= land.price; this.finish(); return; }
+
 
     if (land.ownedBy == 'blue' || this.Px.completeOneCircle == false) {
       return;
@@ -89,7 +123,7 @@ export class AppComponent implements OnInit {
 
   buyY() {
     let land = this.data[this.Py.pos]
-    if (this.noLand.indexOf(this.Py.pos) >= 0) { this.Py.amount -= land.price; this.finish(); return; }
+
     if (land.ownedBy == 'green' || this.Py.completeOneCircle == false) {
       return;
     }
@@ -286,7 +320,42 @@ export class AppComponent implements OnInit {
       this.P2 = false;
       this.P1 = true;
     }
-    this.hideBoth = false;
+    this.hideBoth = true;
+
+    /*
+ this.hideBoth = true;
+    this.noLand = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32];
+    this.noHouse = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32, 12, 13, 14, 23, 24, 31, 33];
+    this.noActionNeeded = [1, 7, 18, 20, 27, 28];
+    this.rewardOrTaxes = [0, 5, 9, 32]
+    this.turn = true;
+    this.Px = new Player();
+    this.Py = new Player();
+
+    this.P1 = false;
+    this.P2 = true;
+    this.showHomeOption = false;
+    this.showPayRent = false;
+
+    */
+
+    sessionStorage.setItem('gameData', JSON.stringify({
+      'hideBoth': this.hideBoth,
+      'turn': this.turn,
+      'Px': this.Px,
+      'Py': this.Py,
+      'P1': this.P1,
+      'P2': this.P2,
+      'showHomeOption': this.showHomeOption,
+      'showPayRent': this.showPayRent,
+      'data': this.data
+
+
+
+    }));
+
+
+
 
   }
 
@@ -294,10 +363,14 @@ export class AppComponent implements OnInit {
   roll1() {
 
     this.result = rollDiceWithoutValues();
+
+
     this.P1 = true;
     this.P2 = true;
     setTimeout(() => { this.animate1() }, 1000)
+
     this.turn = false;
+
 
 
 
@@ -310,19 +383,21 @@ export class AppComponent implements OnInit {
 
     setTimeout(() => { this.animate2() }, 1000)
 
+
     this.turn = true;
+
 
 
 
   }
   animate1() {
+    let pos = (this.Px.pos + this.result) % 36;
 
     if (this.Px.pos + this.result >= 36) {
       this.Px.completeOneCircle = true;
     }
-    if (this.Px.completeOneCircle == false) {
-      this.finish();
-    }
+
+
 
     for (let i = 1; i <= this.result; i++) {
       setTimeout(() => {
@@ -330,55 +405,85 @@ export class AppComponent implements OnInit {
         this.Px.pos = (this.Px.pos + 1) % 36;
       }, 200 * i);
     }
-    setTimeout(() => {
-      let land = this.data[this.Px.pos];
-      this.hideBoth = true;
-      if (this.Px.ownedLand.indexOf(land) >= 0) {
-        this.showHomeOption = true;
-      } else {
-        this.showHomeOption = false;
-      }
-      if (this.Py.ownedLand.indexOf(land) >= 0) {
-        this.showPayRent = true;
-      } else {
-        this.showPayRent = false;
-      }
+    if (this.Px.completeOneCircle == false || this.noActionNeeded.indexOf(pos) >= 0) {
+      this.finish();
 
-    }, 200 * this.result)
+
+    } else if (this.rewardOrTaxes.indexOf(pos) >= 0) {
+      this.Px.amount += this.data[pos].price;
+      if (this.Px.amount < 0) this.Px.amount = 0;
+      this.finish();
+
+
+    }
+    else {
+
+      setTimeout(() => {
+        let land = this.data[this.Px.pos];
+        this.hideBoth = false;
+        if (this.Px.ownedLand.indexOf(land) >= 0) {
+          this.showHomeOption = true;
+        } else {
+          this.showHomeOption = false;
+        }
+        if (this.Py.ownedLand.indexOf(land) >= 0) {
+          this.showPayRent = true;
+        } else {
+          this.showPayRent = false;
+        }
+
+      }, 200 * this.result)
+    }
 
   }
-
-
   animate2() {
+    let pos = (this.Py.pos + this.result) % 36;
 
     if (this.Py.pos + this.result >= 36) {
       this.Py.completeOneCircle = true;
     }
-    if (this.Py.completeOneCircle == false) {
-      this.finish();
-    }
+
+
+
     for (let i = 1; i <= this.result; i++) {
       setTimeout(() => {
 
         this.Py.pos = (this.Py.pos + 1) % 36;
       }, 200 * i);
     }
-    setTimeout(() => {
-      let land = this.data[this.Py.pos];
-      this.hideBoth = true;
-      if (this.Py.ownedLand.indexOf(land) >= 0) {
-        this.showHomeOption = true;
-      } else {
-        this.showHomeOption = false;
-      }
-      if (this.Px.ownedLand.indexOf(land) >= 0) {
-        this.showPayRent = true;
-      } else {
-        this.showPayRent = false;
-      }
+    if (this.Py.completeOneCircle == false || this.noActionNeeded.indexOf(pos) >= 0) {
+      this.finish();
 
-    }, 200 * this.result)
+
+    } else if (this.rewardOrTaxes.indexOf(pos) >= 0) {
+      this.Py.amount += this.data[pos].price;
+      if (this.Py.amount < 0) this.Py.amount = 0;
+      this.finish();
+
+
+    }
+    else {
+
+      setTimeout(() => {
+        let land = this.data[this.Py.pos];
+        this.hideBoth = false;
+        if (this.Py.ownedLand.indexOf(land) >= 0) {
+          this.showHomeOption = true;
+        } else {
+          this.showHomeOption = false;
+        }
+        if (this.Px.ownedLand.indexOf(land) >= 0) {
+          this.showPayRent = true;
+        } else {
+          this.showPayRent = false;
+        }
+
+      }, 200 * this.result)
+    }
 
   }
+
+
+
 
 }
