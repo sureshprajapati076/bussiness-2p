@@ -114,11 +114,15 @@
                         <div>Hello</div>
                         <div>World!!!</div>
 
-                        <h3 style=" background-color: darkcyan;">Player Green: ${{Px.amount|number : '.0-2'}}
+                        <h3 [ngStyle]="{'width': (Px.amount>Py.amount) ? '90%' : '80%'}"
+                            style="width: 80%; margin: 0 auto 2px auto; background-color: darkcyan;">Player Green:
+                            ${{Px.amount|number : '.0-2'}}
                         </h3>
 
 
-                        <h3 style="background-color: lightblue;">Player Blue: ${{Py.amount|number : '.0-2'}}</h3>
+                        <h3 [ngStyle]="{'width': (Py.amount>Px.amount) ? '90%' : '80%'}"
+                            style="width: 90%; margin: 0 auto; background-color: lightblue;">Player Blue:
+                            ${{Py.amount|number : '.0-2'}}</h3>
                         <!-- <button (click)="Px.pos=(Px.pos+1)%36;Py.pos=(Py.pos+1)%36;">Click</button> -->
 
 
