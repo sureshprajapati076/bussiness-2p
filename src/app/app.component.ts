@@ -205,11 +205,11 @@ export class AppComponent implements OnInit {
           index = this.Px.ownedLand.indexOf(land);
           if (index > -1) {
             if (land.house == 'H') {
-              if (this.Py.amount < land.price * 3) { alert('Insufficient Fund'); return; }
+              if (this.Py.amount < land.price * 3) { alert('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
               this.animateNumber('Px', 'add', land.price * 3);
               this.animateNumber('Py', 'sub', land.price * 3);
             } else {
-              if (this.Py.amount < land.price) { alert('Insufficient Fund'); return; }
+              if (this.Py.amount < land.price) { alert('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
               this.animateNumber('Px', 'add', land.price);
               this.animateNumber('Py', 'sub', land.price);
             }
@@ -254,13 +254,13 @@ export class AppComponent implements OnInit {
           index = this.Py.ownedLand.indexOf(land);
           if (index > -1) {
             if (land.house == 'H') {
-              if (this.Px.amount < land.price * 3) { alert('Insufficient Fund'); return; }
+              if (this.Px.amount < land.price * 3) { alert('Green CAN NOT AFFORD! / Transaction Failed'); return; }
               this.animateNumber('Py', 'add', land.price * 3);
 
               this.animateNumber('Px', 'sub', land.price * 3);
 
             } else {
-              if (this.Px.amount < land.price) { alert('Insufficient Fund'); return; }
+              if (this.Px.amount < land.price) { alert('Green CAN NOT AFFORD! / Transaction Failed'); return; }
               this.animateNumber('Py', 'add', land.price);
 
               this.animateNumber('Px', 'sub', land.price);
@@ -350,6 +350,12 @@ export class AppComponent implements OnInit {
     if (land.house == 'H') {
       payAmount *= 2;
     }
+
+    if (this.Px.amount < payAmount) {
+      alert('Insufficient Fund!')
+      return;
+    }
+
     this.animateNumber('Py', 'add', payAmount);
 
     this.animateNumber('Px', 'sub', payAmount);
@@ -362,6 +368,10 @@ export class AppComponent implements OnInit {
     let payAmount = land.price;
     if (land.house == 'H') {
       payAmount *= 2;
+    }
+    if (this.Py.amount < payAmount) {
+      alert('Insufficient Fund!')
+      return;
     }
     this.animateNumber('Px', 'add', payAmount);
 
