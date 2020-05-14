@@ -128,10 +128,27 @@ export class AppComponent implements OnInit {
     if (this.Px.ownedLand.indexOf(land) == -1) {
 
       this.Px.ownedLand.push(land)
-      this.Px.amount -= land.price;
+      this.animateNumber('Px', 'sub', land.price);
     }
     this.finish();
 
+  }
+  animateNumber(player, method, amount) {
+
+    for (let i = 1; i <= amount; i++) {
+      setTimeout(() => {
+        if (player == 'Px' && method == 'add') {
+          this.Px.amount += 1;
+        } else if (player == 'Px' && method == 'sub') {
+          this.Px.amount -= 1;
+        } else if (player == 'Py' && method == 'add') {
+          this.Py.amount += 1;
+        } else {
+          this.Py.amount -= 1;
+        }
+
+      }, 200);
+    }
   }
 
 
@@ -149,7 +166,7 @@ export class AppComponent implements OnInit {
 
     if (this.Py.ownedLand.indexOf(land) == -1) {
       this.Py.ownedLand.push(land)
-      this.Py.amount -= land.price;
+      this.animateNumber('Py', 'sub', land.price);
     }
     this.finish();
 
@@ -163,7 +180,8 @@ export class AppComponent implements OnInit {
         index = this.Px.ownedLand.indexOf(land);
         if (index > -1) {
           land.house = '';
-          this.Px.amount += land.price * 1.8;
+          this.animateNumber('Px', 'add', land.price * 1.8);
+
 
         }
         break;
@@ -171,9 +189,9 @@ export class AppComponent implements OnInit {
         index = this.Px.ownedLand.indexOf(land);
         if (index > -1) {
           if (land.house == 'H') {
-            this.Px.amount += land.price * 2.7;
+            this.animateNumber('Px', 'add', land.price * 2.7);
           } else {
-            this.Px.amount += land.price * 0.9;
+            this.animateNumber('Px', 'add', land.price * 0.9);
           }
           land.ownedBy = 'bank'
 
@@ -188,12 +206,12 @@ export class AppComponent implements OnInit {
           if (index > -1) {
             if (land.house == 'H') {
               if (this.Py.amount < land.price * 3) { alert('Insufficient Fund'); return; }
-              this.Px.amount += land.price * 3;
-              this.Py.amount -= land.price * 3;
+              this.animateNumber('Px', 'add', land.price * 3);
+              this.animateNumber('Py', 'sub', land.price * 3);
             } else {
               if (this.Py.amount < land.price) { alert('Insufficient Fund'); return; }
-              this.Px.amount += land.price;
-              this.Py.amount -= land.price;
+              this.animateNumber('Px', 'add', land.price);
+              this.animateNumber('Py', 'sub', land.price);
             }
 
             land.ownedBy = 'blue'
@@ -210,7 +228,8 @@ export class AppComponent implements OnInit {
         index = this.Py.ownedLand.indexOf(land);
         if (index > -1) {
           land.house = '';
-          this.Py.amount += land.price * 1.8;
+          this.animateNumber('Py', 'add', land.price * 1.8);
+
 
         }
         break;
@@ -218,9 +237,11 @@ export class AppComponent implements OnInit {
         index = this.Py.ownedLand.indexOf(land);
         if (index > -1) {
           if (land.house == 'H') {
-            this.Py.amount += land.price * 2.7;
+            this.animateNumber('Py', 'add', land.price * 2.7);
+
           } else {
-            this.Py.amount += land.price * 0.9;
+            this.animateNumber('Py', 'add', land.price * 0.9);
+
           }
           land.ownedBy = 'bank'
 
@@ -234,12 +255,16 @@ export class AppComponent implements OnInit {
           if (index > -1) {
             if (land.house == 'H') {
               if (this.Px.amount < land.price * 3) { alert('Insufficient Fund'); return; }
-              this.Py.amount += land.price * 3;
-              this.Px.amount -= land.price * 3;
+              this.animateNumber('Py', 'add', land.price * 3);
+
+              this.animateNumber('Px', 'sub', land.price * 3);
+
             } else {
               if (this.Px.amount < land.price) { alert('Insufficient Fund'); return; }
-              this.Py.amount += land.price;
-              this.Px.amount -= land.price;
+              this.animateNumber('Py', 'add', land.price);
+
+              this.animateNumber('Px', 'sub', land.price);
+
             }
 
             land.ownedBy = 'green'
@@ -265,7 +290,8 @@ export class AppComponent implements OnInit {
         return;
       }
       land.house = 'H';
-      this.Px.amount -= land.price * 2;
+      this.animateNumber('Px', 'sub', land.price * 2);
+
       this.finish();
     }
 
@@ -280,7 +306,8 @@ export class AppComponent implements OnInit {
         return;
       }
       land.house = 'H';
-      this.Py.amount -= land.price * 2;
+      this.animateNumber('Py', 'sub', land.price * 2);
+
       this.finish();
     }
 
@@ -323,8 +350,10 @@ export class AppComponent implements OnInit {
     if (land.house == 'H') {
       payAmount *= 2;
     }
-    this.Py.amount += payAmount;
-    this.Px.amount -= payAmount;
+    this.animateNumber('Py', 'add', payAmount);
+
+    this.animateNumber('Px', 'sub', payAmount);
+
     this.showPayRent = false;
     this.finish();
   }
@@ -334,8 +363,10 @@ export class AppComponent implements OnInit {
     if (land.house == 'H') {
       payAmount *= 2;
     }
-    this.Px.amount += payAmount;
-    this.Py.amount -= payAmount;
+    this.animateNumber('Px', 'add', payAmount);
+
+    this.animateNumber('Py', 'sub', payAmount);
+
     this.showPayRent = false;
     this.finish();
   }
