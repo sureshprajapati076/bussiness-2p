@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   title = 'Business-2 Player';
   result: number
 
-
+  hideVideo: boolean;
 
   Px: Player;
   Py: Player;
@@ -53,6 +53,7 @@ export class AppComponent implements OnInit {
   turn: boolean;
 
   ngOnInit() {
+    this.hideVideo = false;
 
     this.noLand = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32];
     this.noHouse = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32, 12, 13, 14, 23, 24, 31, 33];

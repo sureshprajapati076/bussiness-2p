@@ -546,6 +546,12 @@
 
 
 
+            <div style="position: absolute; bottom:0px;">
+                <div style="float: right;"><button (click)="hideVideo=!hideVideo"
+                        class="btn btn-outline-danger btn-sm">{{hideVideo?'X':'How To Play'}}</button></div>
+                <iframe *ngIf="hideVideo" width="460" height="315" src="https://www.youtube.com/embed/0NdIGsyNPtc"
+                    frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
 
     </div>
