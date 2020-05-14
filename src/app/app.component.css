@@ -5,12 +5,31 @@
       width: 60px;
       height: 90px;
       text-align: center;
+      transition: border-width 0.6s linear;
   }
+  .horizontal .animateborder{
+    border-color:green;
+    border-width: 10px;
+  }
+  .vertical .animateborder{
+    border-color:green;
+    border-width: 10px;
+  }
+  .animateborder{
+    border-width: 10px;
+  }
+ 
+  /* .horizontal td:hover { border-width: 10px;  }
+  .vertical td:hover { border-width: 10px; } */
+
+
+
   .vertical td{
     border: 1px solid black;
     width: 90px;
     height: 60px;
     text-align: center;
+    transition: border-width 0.6s linear;
   }
   .dotRed {
     position: relative;

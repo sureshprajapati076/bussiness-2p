@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
   P1: boolean
   noLand = []
   noHouse = []
+  hover = []
   data: Array<Land>
   showHomeOption: boolean
   showPayRent: boolean
@@ -383,6 +384,9 @@ export class AppComponent implements OnInit {
   }
 
   finish() {
+    for (let i = 0; i < 40; i++) {
+      this.hover[i] = false;
+    }
     if (this.showPayRent == true) {
       return;
     }
@@ -561,6 +565,27 @@ export class AppComponent implements OnInit {
 
       }, 200 * this.result)
     }
+
+  }
+
+  animateBorder(land: Land) {
+
+
+    let index = this.data.findIndex(x => x.name == land.name);
+
+
+
+
+    this.hover[index] = true;
+
+
+
+  }
+
+  removeAnimateBorder(land: Land) {
+    let index = this.data.findIndex(x => x.name == land.name);
+
+    this.hover[index] = false;
 
   }
 
