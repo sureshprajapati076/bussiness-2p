@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameInitialData } from './data';
 
+
 declare const rollDiceWithoutValues: any;
 
 export class Player {
@@ -8,6 +9,7 @@ export class Player {
   completeOneCircle: boolean
   ownedLand: Array<Land>;
   amount: number;
+  secretKey: string;
   constructor() {
     this.pos = 0;
     this.ownedLand = [];
@@ -33,6 +35,7 @@ export class AppComponent implements OnInit {
   result: number
 
 
+
   Px: Player;
   Py: Player;
 
@@ -50,6 +53,7 @@ export class AppComponent implements OnInit {
   turn: boolean;
 
   ngOnInit() {
+
     this.noLand = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32];
     this.noHouse = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32, 12, 13, 14, 23, 24, 31, 33];
     this.noActionNeeded = [1, 7, 18, 20, 27, 28];
@@ -85,6 +89,9 @@ export class AppComponent implements OnInit {
   reset() {
 
 
+
+
+
     this.hideBoth = true;
 
     this.turn = true;
@@ -96,11 +103,18 @@ export class AppComponent implements OnInit {
     this.showHomeOption = false;
     this.showPayRent = false;
     this.data = GameInitialData.data;
+    this.Px.secretKey = prompt('Enter secret key for Green', 'green');
+    this.Py.secretKey = prompt('Enter secret key for Green', 'blue');
 
 
   }
   buyX() {
     let land = this.data[this.Px.pos]
+
+    if (this.Px.amount < land.price) {
+      alert('Insufficient Fund!')
+      return;
+    }
 
 
 
@@ -123,6 +137,10 @@ export class AppComponent implements OnInit {
 
   buyY() {
     let land = this.data[this.Py.pos]
+    if (this.Py.amount < land.price) {
+      alert('Insufficient Fund!')
+      return;
+    }
 
     if (land.ownedBy == 'green' || this.Py.completeOneCircle == false) {
       return;
@@ -164,23 +182,28 @@ export class AppComponent implements OnInit {
         }
         break;
       case 'SELL_B':
-        index = this.Px.ownedLand.indexOf(land);
-        if (index > -1) {
-          if (land.house == 'H') {
-            if (this.Py.amount < land.price * 3) return;
-            this.Px.amount += land.price * 3;
-            this.Py.amount -= land.price * 3;
-          } else {
-            if (this.Py.amount < land.price) return;
-            this.Px.amount += land.price;
-            this.Py.amount -= land.price;
+        let secret: string = prompt('Enter Blue Player Secret to confirm');
+        if (this.Py.secretKey === secret) {
+          index = this.Px.ownedLand.indexOf(land);
+          if (index > -1) {
+            if (land.house == 'H') {
+              if (this.Py.amount < land.price * 3) { alert('Insufficient Fund'); return; }
+              this.Px.amount += land.price * 3;
+              this.Py.amount -= land.price * 3;
+            } else {
+              if (this.Py.amount < land.price) { alert('Insufficient Fund'); return; }
+              this.Px.amount += land.price;
+              this.Py.amount -= land.price;
+            }
+
+            land.ownedBy = 'blue'
+
+
+            this.Px.ownedLand.splice(index, 1);
+            this.Py.ownedLand.push(land);
           }
-
-          land.ownedBy = 'blue'
-
-
-          this.Px.ownedLand.splice(index, 1);
-          this.Py.ownedLand.push(land);
+        } else {
+          alert('Invalid code / Transaction Failed')
         }
         break;
       case 'RMV_HOUSE_B':
@@ -205,23 +228,28 @@ export class AppComponent implements OnInit {
         }
         break;
       case 'SELL_G':
-        index = this.Py.ownedLand.indexOf(land);
-        if (index > -1) {
-          if (land.house == 'H') {
-            if (this.Px.amount < land.price * 3) return;
-            this.Py.amount += land.price * 3;
-            this.Px.amount -= land.price * 3;
-          } else {
-            if (this.Px.amount < land.price) return;
-            this.Py.amount += land.price;
-            this.Px.amount -= land.price;
+        let secretG: string = prompt('Enter Green Player Secret to confirm');
+        if (this.Px.secretKey === secretG) {
+          index = this.Py.ownedLand.indexOf(land);
+          if (index > -1) {
+            if (land.house == 'H') {
+              if (this.Px.amount < land.price * 3) { alert('Insufficient Fund'); return; }
+              this.Py.amount += land.price * 3;
+              this.Px.amount -= land.price * 3;
+            } else {
+              if (this.Px.amount < land.price) { alert('Insufficient Fund'); return; }
+              this.Py.amount += land.price;
+              this.Px.amount -= land.price;
+            }
+
+            land.ownedBy = 'green'
+
+
+            this.Py.ownedLand.splice(index, 1);
+            this.Px.ownedLand.push(land);
           }
-
-          land.ownedBy = 'green'
-
-
-          this.Py.ownedLand.splice(index, 1);
-          this.Px.ownedLand.push(land);
+        } else {
+          alert('Invalid code / Transaction Failed')
         }
         break;
       default:
@@ -232,6 +260,10 @@ export class AppComponent implements OnInit {
     let land = this.data[this.Px.pos]
     if (this.noHouse.indexOf(this.Px.pos) >= 0) return;
     if (this.Px.ownedLand.indexOf(land) >= 0 && land.house != 'H') {
+      if (this.Px.amount < 2 * land.price) {
+        alert('Insufficient Fund!')
+        return;
+      }
       land.house = 'H';
       this.Px.amount -= land.price * 2;
       this.finish();
@@ -243,6 +275,10 @@ export class AppComponent implements OnInit {
     let land = this.data[this.Py.pos]
     if (this.noHouse.indexOf(this.Py.pos) >= 0) return;
     if (this.Py.ownedLand.indexOf(land) >= 0 && land.house != 'H') {
+      if (this.Py.amount < 2 * land.price) {
+        alert('Insufficient Fund!')
+        return;
+      }
       land.house = 'H';
       this.Py.amount -= land.price * 2;
       this.finish();
