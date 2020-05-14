@@ -389,7 +389,9 @@ export class AppComponent implements OnInit {
       alert('You Are Out Of Money');
       return;
     }
-
+    if (this.result == 2 || this.result == 12) {
+      this.turn = !this.turn;
+    }
     if (this.turn == true) {
       this.P2 = true;
       this.P1 = false;
@@ -397,6 +399,7 @@ export class AppComponent implements OnInit {
       this.P2 = false;
       this.P1 = true;
     }
+
     this.hideBoth = true;
 
     /*

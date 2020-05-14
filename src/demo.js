@@ -2,7 +2,7 @@ var total;
 function response(res) {
     // returns an array of the values from the dice
     total = res[0] + res[1];
-    // total = 2;
+
 }
 function rollDiceWithoutValues() {
     const element = document.getElementById('dice-box1');
