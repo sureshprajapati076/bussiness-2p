@@ -15,7 +15,7 @@
                         <div *ngIf="Py.pos==27" class="dotBlue"></div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[26] == true}"
+                    <td [ngClass]="{'animateborder': hover[26] == true}" [ngStyle]="{'border-color':data[26].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/26.png');">
                         <div *ngIf=" data[26].ownedBy != 'bank' " [ngStyle]="{'background-color': data[26].ownedBy}"
                             class="dotRedTicketTop">{{data[26].house}}</div>
@@ -26,7 +26,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[25] == true}"
+                    <td [ngClass]="{'animateborder': hover[25] == true}" [ngStyle]="{'border-color':data[25].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/25.png');">
                         <div *ngIf=" data[25].ownedBy != 'bank' " [ngStyle]="{'background-color': data[25].ownedBy}"
                             class="dotRedTicketTop">{{data[25].house}}</div>
@@ -37,7 +37,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[24] == true}"
+                    <td [ngClass]="{'animateborder': hover[24] == true}" [ngStyle]="{'border-color':data[24].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/24.png');">
                         <div *ngIf=" data[24].ownedBy != 'bank' " [ngStyle]="{'background-color': data[24].ownedBy}"
                             class="dotRedTicketTop">{{data[24].house}}</div>
@@ -47,7 +47,7 @@
                             <div *ngIf="Py.pos==24" class="dotBlue"></div>
                         </div>
                     </td>
-                    <td [ngClass]="{'animateborder': hover[23] == true}"
+                    <td [ngClass]="{'animateborder': hover[23] == true}" [ngStyle]="{'border-color':data[23].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/23.png');">
                         <div *ngIf=" data[23].ownedBy != 'bank' " [ngStyle]="{'background-color': data[23].ownedBy}"
                             class="dotRedTicketTop">{{data[23].house}}</div>
@@ -57,7 +57,7 @@
                             <div *ngIf="Py.pos==23" class="dotBlue"></div>
                         </div>
                     </td>
-                    <td [ngClass]="{'animateborder': hover[22] == true}"
+                    <td [ngClass]="{'animateborder': hover[22] == true}" [ngStyle]="{'border-color':data[22].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/22.png');">
                         <div *ngIf=" data[22].ownedBy != 'bank' " [ngStyle]="{'background-color': data[22].ownedBy}"
                             class="dotRedTicketTop">{{data[22].house}}</div>
@@ -68,7 +68,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[21] == true}"
+                    <td [ngClass]="{'animateborder': hover[21] == true}" [ngStyle]="{'border-color':data[21].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/21.png');">
                         <div *ngIf=" data[21].ownedBy != 'bank' " [ngStyle]="{'background-color': data[21].ownedBy}"
                             class="dotRedTicketTop">{{data[21].house}}</div>
@@ -79,7 +79,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[20] == true}"
+                    <td [ngClass]="{'animateborder': hover[20] == true}" [ngStyle]="{'border-color':data[20].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/20.png');">
 
                         <div>
@@ -89,7 +89,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[19] == true}"
+                    <td [ngClass]="{'animateborder': hover[19] == true}" [ngStyle]="{'border-color':data[19].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/19.png');">
                         <div *ngIf=" data[19].ownedBy != 'bank' " [ngStyle]="{'background-color': data[19].ownedBy}"
                             class="dotRedTicketTop">{{data[19].house}}</div>
@@ -107,7 +107,7 @@
                     </td>
                 </tr>
                 <tr class="vertical">
-                    <td [ngClass]="{'animateborder': hover[28] == true}"
+                    <td [ngClass]="{'animateborder': hover[28] == true}" [ngStyle]="{'border-color':data[28].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/28.png');">
 
                         <div>
@@ -156,7 +156,7 @@
 
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[17] == true}"
+                    <td [ngClass]="{'animateborder': hover[17] == true}" [ngStyle]="{'border-color':data[17].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/17.png');">
                         <div *ngIf=" data[17].ownedBy != 'bank' " [ngStyle]="{'background-color': data[17].ownedBy}"
                             class="dotRedTicketRight">{{data[17].house}}</div>
@@ -169,7 +169,7 @@
                     </td>
                 </tr>
                 <tr class="vertical">
-                    <td [ngClass]="{'animateborder': hover[29] == true}"
+                    <td [ngClass]="{'animateborder': hover[29] == true}" [ngStyle]="{'border-color':data[29].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/29.png');">
 
                         <div *ngIf=" data[29].ownedBy != 'bank' " [ngStyle]="{'background-color': data[29].ownedBy}"
@@ -181,7 +181,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[16] == true}"
+                    <td [ngClass]="{'animateborder': hover[16] == true}" [ngStyle]="{'border-color':data[16].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/16.png');">
                         <div *ngIf=" data[16].ownedBy != 'bank' " [ngStyle]="{'background-color': data[16].ownedBy}"
                             class="dotRedTicketRight">{{data[16].house}}</div>
@@ -194,7 +194,7 @@
                     </td>
                 </tr>
                 <tr class="vertical">
-                    <td [ngClass]="{'animateborder': hover[30] == true}"
+                    <td [ngClass]="{'animateborder': hover[30] == true}" [ngStyle]="{'border-color':data[30].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/30.png');">
                         <div *ngIf=" data[30].ownedBy != 'bank' " [ngStyle]="{'background-color': data[30].ownedBy}"
                             class="dotRedTicketLeft">{{data[30].house}}</div>
@@ -205,7 +205,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[15] == true}"
+                    <td [ngClass]="{'animateborder': hover[15] == true}" [ngStyle]="{'border-color':data[15].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/15.png');">
                         <div *ngIf=" data[15].ownedBy != 'bank' " [ngStyle]="{'background-color': data[15].ownedBy}"
                             class="dotRedTicketRight">{{data[15].house}}</div>
@@ -218,7 +218,7 @@
                     </td>
                 </tr>
                 <tr class="vertical">
-                    <td [ngClass]="{'animateborder': hover[31] == true}"
+                    <td [ngClass]="{'animateborder': hover[31] == true}" [ngStyle]="{'border-color':data[31].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/31.png');">
                         <div *ngIf=" data[31].ownedBy != 'bank' " [ngStyle]="{'background-color': data[31].ownedBy}"
                             class="dotRedTicketLeft">{{data[31].house}}</div>
@@ -247,7 +247,7 @@
 
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[14] == true}"
+                    <td [ngClass]="{'animateborder': hover[14] == true}" [ngStyle]="{'border-color':data[14].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/14.png');">
                         <div *ngIf=" data[14].ownedBy != 'bank' " [ngStyle]="{'background-color': data[14].ownedBy}"
                             class="dotRedTicketRight">{{data[14].house}}</div>
@@ -260,7 +260,7 @@
                     </td>
                 </tr>
                 <tr class="vertical">
-                    <td [ngClass]="{'animateborder': hover[32] == true}"
+                    <td [ngClass]="{'animateborder': hover[32] == true}" [ngStyle]="{'border-color':data[32].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/32.png');">
 
                         <div>
@@ -270,7 +270,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[13] == true}"
+                    <td [ngClass]="{'animateborder': hover[13] == true}" [ngStyle]="{'border-color':data[13].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/13.png');">
                         <div *ngIf=" data[13].ownedBy != 'bank' " [ngStyle]="{'background-color': data[13].ownedBy}"
                             class="dotRedTicketRight">{{data[13].house}}</div>
@@ -283,7 +283,7 @@
                     </td>
                 </tr>
                 <tr class="vertical">
-                    <td [ngClass]="{'animateborder': hover[33] == true}"
+                    <td [ngClass]="{'animateborder': hover[33] == true}" [ngStyle]="{'border-color':data[33].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/33.png');">
                         <div *ngIf=" data[33].ownedBy != 'bank' " [ngStyle]="{'background-color': data[33].ownedBy}"
                             class="dotRedTicketLeft">{{data[33].house}}</div>
@@ -294,8 +294,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[12] == true}"
-                        [ngClass]="{'animateborder': hover[12] == true}"
+                    <td [ngClass]="{'animateborder': hover[12] == true}" [ngStyle]="{'border-color':data[12].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/12.png');">
                         <div *ngIf=" data[12].ownedBy != 'bank' " [ngStyle]="{'background-color': data[12].ownedBy}"
                             class="dotRedTicketRight">{{data[12].house}}</div>
@@ -309,7 +308,7 @@
                 </tr>
 
                 <tr class="vertical">
-                    <td [ngClass]="{'animateborder': hover[34] == true}"
+                    <td [ngClass]="{'animateborder': hover[34] == true}" [ngStyle]="{'border-color':data[34].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/34.png');">
                         <div *ngIf=" data[34].ownedBy != 'bank' " [ngStyle]="{'background-color': data[34].ownedBy}"
                             class="dotRedTicketLeft">{{data[34].house}}</div>
@@ -320,7 +319,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[11] == true}"
+                    <td [ngClass]="{'animateborder': hover[11] == true}" [ngStyle]="{'border-color':data[11].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/11.png');">
                         <div *ngIf=" data[11].ownedBy != 'bank' " [ngStyle]="{'background-color': data[11].ownedBy}"
                             class="dotRedTicketRight">{{data[11].house}}</div>
@@ -333,7 +332,7 @@
                     </td>
                 </tr>
                 <tr class="vertical">
-                    <td [ngClass]="{'animateborder': hover[35] == true}"
+                    <td [ngClass]="{'animateborder': hover[35] == true}" [ngStyle]="{'border-color':data[35].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/35.png');">
                         <div *ngIf=" data[35].ownedBy != 'bank' " [ngStyle]="{'background-color': data[35].ownedBy}"
                             class="dotRedTicketLeft">{{data[35].house}}</div>
@@ -344,7 +343,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[10] == true}"
+                    <td [ngClass]="{'animateborder': hover[10] == true}" [ngStyle]="{'border-color':data[10].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/10.png');">
                         <div *ngIf=" data[10].ownedBy != 'bank' " [ngStyle]="{'background-color': data[10].ownedBy}"
                             class="dotRedTicketRight">{{data[10].house}}</div>
@@ -372,7 +371,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[2] == true}"
+                    <td [ngClass]="{'animateborder': hover[2] == true}" [ngStyle]="{'border-color':data[2].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/2.png');">
                         <div *ngIf=" data[2].ownedBy != 'bank' " [ngStyle]="{'background-color': data[2].ownedBy}"
                             class="dotRedTicketBottom">{{data[2].house}}</div>
@@ -383,7 +382,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[3] == true}"
+                    <td [ngClass]="{'animateborder': hover[3] == true}" [ngStyle]="{'border-color':data[3].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/3.png');">
                         <div *ngIf=" data[3].ownedBy != 'bank' " [ngStyle]="{'background-color': data[3].ownedBy}"
                             class="dotRedTicketBottom">{{data[3].house}}</div>
@@ -394,7 +393,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[4] == true}"
+                    <td [ngClass]="{'animateborder': hover[4] == true}" [ngStyle]="{'border-color':data[4].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/4.png');">
                         <div *ngIf=" data[4].ownedBy != 'bank' " [ngStyle]="{'background-color': data[4].ownedBy}"
                             class="dotRedTicketBottom">{{data[4].house}}</div>
@@ -404,7 +403,7 @@
                             <div *ngIf="Py.pos==4" class="dotBlue"></div>
                         </div>
                     </td>
-                    <td [ngClass]="{'animateborder': hover[5] == true}"
+                    <td [ngClass]="{'animateborder': hover[5] == true}" [ngStyle]="{'border-color':data[5].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/5.png');">
 
                         <div>
@@ -414,7 +413,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[6] == true}"
+                    <td [ngClass]="{'animateborder': hover[6] == true}" [ngStyle]="{'border-color':data[6].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/6.png');">
                         <div *ngIf=" data[6].ownedBy != 'bank' " [ngStyle]="{'background-color': data[6].ownedBy}"
                             class="dotRedTicketBottom">{{data[6].house}}</div>
@@ -425,7 +424,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[7] == true}"
+                    <td [ngClass]="{'animateborder': hover[7] == true}" [ngStyle]="{'border-color':data[7].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/7.png');">
 
                         <div>
@@ -435,7 +434,7 @@
                         </div>
 
                     </td>
-                    <td [ngClass]="{'animateborder': hover[8] == true}"
+                    <td [ngClass]="{'animateborder': hover[8] == true}" [ngStyle]="{'border-color':data[8].ownedBy}"
                         style=" background-size: 100% 100%;background-image: url('assets/pics/8.png');">
                         <div *ngIf=" data[8].ownedBy != 'bank' " [ngStyle]="{'background-color': data[8].ownedBy}"
                             class="dotRedTicketBottom">{{data[8].house}}</div>
