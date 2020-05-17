@@ -617,7 +617,6 @@ export class AppComponent implements OnInit {
   }
 
   sellProperty(option, land: Land) {
-    alert(option)
     let sellTo = 'Bank'
     if (option == 'SELL_G') {
       sellTo = "Green Player"
