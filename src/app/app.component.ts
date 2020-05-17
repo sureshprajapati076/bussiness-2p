@@ -617,9 +617,15 @@ export class AppComponent implements OnInit {
   }
 
   sellProperty(option, land: Land) {
+    let sellTo = 'Bank'
+    if (option == 'SELL_G') {
+      sellTo = "Green Player"
+    } else if (option = 'SELL_B') {
+      sellTo = 'Blue Player'
+    }
     Swal.fire({
       title: 'Are you sure?',
-      text: 'Sell Property',
+      text: 'You want to sell Property on' + land.name + 'TO' + sellTo + '!!!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sell',
