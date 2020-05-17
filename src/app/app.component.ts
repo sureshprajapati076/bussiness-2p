@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GameInitialData } from './data';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { Title } from '@angular/platform-browser';
 
 declare const rollDiceWithoutValues: any;
 
@@ -31,7 +33,8 @@ export class Land {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Business-2 Player';
+
+  appTitle = 'Business-2 Player';
   result: number
 
   hideVideo: boolean;
@@ -52,6 +55,7 @@ export class AppComponent implements OnInit {
 
   hideBoth: boolean
   turn: boolean;
+  sellStatus: boolean
 
 
   showMessage(message) {
@@ -66,6 +70,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
+    this.sellStatus = false;
 
     this.hideVideo = false;
 
@@ -190,7 +195,13 @@ export class AppComponent implements OnInit {
 
 
   }
-  sellProperty(option, land: Land) {
+
+
+
+
+
+  sellPropertyConfirm(option, land: Land) {
+
     let index;
 
     switch (option) {
@@ -603,6 +614,31 @@ export class AppComponent implements OnInit {
 
     this.hover[index] = false;
 
+  }
+
+  sellProperty(option, land: Land) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Sell Property',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sell',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.value) {
+
+
+        this.sellPropertyConfirm(option, land);
+
+
+
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+
+        )
+      }
+    })
   }
 
 
