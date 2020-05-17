@@ -122,8 +122,8 @@ export class AppComponent implements OnInit {
     this.showHomeOption = false;
     this.showPayRent = false;
     this.data = GameInitialData.data;
-    this.Px.secretKey = prompt('Enter secret key for Green', 'green');
-    this.Py.secretKey = prompt('Enter secret key for Green', 'blue');
+    //this.Px.secretKey = prompt('Enter secret key for Green', 'green');  uncomment prompt if you want to create secret key for transaction among players
+    // this.Py.secretKey = prompt('Enter secret key for Green', 'blue');
     this.toastr.success('All Initial Setup Done! Good Luck for Game!!!', '');
 
 
@@ -228,29 +228,30 @@ export class AppComponent implements OnInit {
         }
         break;
       case 'SELL_B':
-        let secret: string = prompt('Enter Blue Player Secret to confirm');
-        if (this.Py.secretKey === secret) {
-          index = this.Px.ownedLand.indexOf(land);
-          if (index > -1) {
-            if (land.house == 'H') {
-              if (this.Py.amount < land.price * 3) { this.showMessage('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
-              this.animateNumber('Px', 'add', land.price * 3);
-              this.animateNumber('Py', 'sub', land.price * 3);
-            } else {
-              if (this.Py.amount < land.price) { this.showMessage('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
-              this.animateNumber('Px', 'add', land.price);
-              this.animateNumber('Py', 'sub', land.price);
-            }
-
-            land.ownedBy = 'blue'
-
-
-            this.Px.ownedLand.splice(index, 1);
-            this.Py.ownedLand.push(land);
+        // let secret: string = prompt('Enter Blue Player Secret to confirm');
+        // if (this.Py.secretKey === secret) {
+        index = this.Px.ownedLand.indexOf(land);
+        if (index > -1) {
+          if (land.house == 'H') {
+            if (this.Py.amount < land.price * 3) { this.showMessage('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
+            this.animateNumber('Px', 'add', land.price * 3);
+            this.animateNumber('Py', 'sub', land.price * 3);
+          } else {
+            if (this.Py.amount < land.price) { this.showMessage('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
+            this.animateNumber('Px', 'add', land.price);
+            this.animateNumber('Py', 'sub', land.price);
           }
-        } else {
-          this.showMessage('Invalid code / Transaction Failed')
+
+          land.ownedBy = 'blue'
+
+
+          this.Px.ownedLand.splice(index, 1);
+          this.Py.ownedLand.push(land);
         }
+        // }
+        //  else {
+        //   this.showMessage('Invalid code / Transaction Failed')
+        // }
         break;
       case 'RMV_HOUSE_B':
         index = this.Py.ownedLand.indexOf(land);
@@ -277,33 +278,33 @@ export class AppComponent implements OnInit {
         }
         break;
       case 'SELL_G':
-        let secretG: string = prompt('Enter Green Player Secret to confirm');
-        if (this.Px.secretKey === secretG) {
-          index = this.Py.ownedLand.indexOf(land);
-          if (index > -1) {
-            if (land.house == 'H') {
-              if (this.Px.amount < land.price * 3) { this.showMessage('Green CAN NOT AFFORD! / Transaction Failed'); return; }
-              this.animateNumber('Py', 'add', land.price * 3);
+        // let secretG: string = prompt('Enter Green Player Secret to confirm');
+        // if (this.Px.secretKey === secretG) {
+        index = this.Py.ownedLand.indexOf(land);
+        if (index > -1) {
+          if (land.house == 'H') {
+            if (this.Px.amount < land.price * 3) { this.showMessage('Green CAN NOT AFFORD! / Transaction Failed'); return; }
+            this.animateNumber('Py', 'add', land.price * 3);
 
-              this.animateNumber('Px', 'sub', land.price * 3);
+            this.animateNumber('Px', 'sub', land.price * 3);
 
-            } else {
-              if (this.Px.amount < land.price) { this.showMessage('Green CAN NOT AFFORD! / Transaction Failed'); return; }
-              this.animateNumber('Py', 'add', land.price);
+          } else {
+            if (this.Px.amount < land.price) { this.showMessage('Green CAN NOT AFFORD! / Transaction Failed'); return; }
+            this.animateNumber('Py', 'add', land.price);
 
-              this.animateNumber('Px', 'sub', land.price);
+            this.animateNumber('Px', 'sub', land.price);
 
-            }
-
-            land.ownedBy = 'green'
-
-
-            this.Py.ownedLand.splice(index, 1);
-            this.Px.ownedLand.push(land);
           }
-        } else {
-          this.showMessage('Invalid code / Transaction Failed')
+
+          land.ownedBy = 'green'
+
+
+          this.Py.ownedLand.splice(index, 1);
+          this.Px.ownedLand.push(land);
         }
+        // } else {
+        //   this.showMessage('Invalid code / Transaction Failed')
+        // }
         break;
       default:
     }
