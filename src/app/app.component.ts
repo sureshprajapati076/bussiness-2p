@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GameInitialData } from './data';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { Title } from '@angular/platform-browser';
 
 declare const rollDiceWithoutValues: any;
 
