@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameInitialData } from './data';
-
+import { ToastrService } from 'ngx-toastr';
 
 declare const rollDiceWithoutValues: any;
 
@@ -13,8 +13,8 @@ export class Player {
   constructor() {
     this.pos = 0;
     this.ownedLand = [];
-    this.amount = 40000;
-    this.completeOneCircle = false;
+    this.amount = 4000;
+    this.completeOneCircle = true;
   }
 
 }
@@ -53,7 +53,20 @@ export class AppComponent implements OnInit {
   hideBoth: boolean
   turn: boolean;
 
+
+  showMessage(message) {
+
+    this.toastr.warning('<span>' + message + '</span>', "", { enableHtml: true, timeOut: 2000, closeButton: true, positionClass: "toast-top-right" });
+
+
+  }
+  constructor(private toastr: ToastrService) {
+
+  }
+
+
   ngOnInit() {
+
     this.hideVideo = false;
 
     this.noLand = [0, 1, 5, 7, 9, 18, 20, 27, 28, 32];
@@ -107,14 +120,17 @@ export class AppComponent implements OnInit {
     this.data = GameInitialData.data;
     this.Px.secretKey = prompt('Enter secret key for Green', 'green');
     this.Py.secretKey = prompt('Enter secret key for Green', 'blue');
+    this.toastr.success('All Initial Setup Done! Good Luck for Game!!!', '');
 
 
   }
   buyX() {
+
     let land = this.data[this.Px.pos]
 
     if (this.Px.amount < land.price) {
-      alert('Insufficient Fund!')
+      this.showMessage('Insufficient Fund!');
+
       return;
     }
 
@@ -157,7 +173,7 @@ export class AppComponent implements OnInit {
   buyY() {
     let land = this.data[this.Py.pos]
     if (this.Py.amount < land.price) {
-      alert('Insufficient Fund!')
+      this.showMessage('Insufficient Fund!')
       return;
     }
 
@@ -207,11 +223,11 @@ export class AppComponent implements OnInit {
           index = this.Px.ownedLand.indexOf(land);
           if (index > -1) {
             if (land.house == 'H') {
-              if (this.Py.amount < land.price * 3) { alert('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
+              if (this.Py.amount < land.price * 3) { this.showMessage('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
               this.animateNumber('Px', 'add', land.price * 3);
               this.animateNumber('Py', 'sub', land.price * 3);
             } else {
-              if (this.Py.amount < land.price) { alert('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
+              if (this.Py.amount < land.price) { this.showMessage('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
               this.animateNumber('Px', 'add', land.price);
               this.animateNumber('Py', 'sub', land.price);
             }
@@ -223,7 +239,7 @@ export class AppComponent implements OnInit {
             this.Py.ownedLand.push(land);
           }
         } else {
-          alert('Invalid code / Transaction Failed')
+          this.showMessage('Invalid code / Transaction Failed')
         }
         break;
       case 'RMV_HOUSE_B':
@@ -256,13 +272,13 @@ export class AppComponent implements OnInit {
           index = this.Py.ownedLand.indexOf(land);
           if (index > -1) {
             if (land.house == 'H') {
-              if (this.Px.amount < land.price * 3) { alert('Green CAN NOT AFFORD! / Transaction Failed'); return; }
+              if (this.Px.amount < land.price * 3) { this.showMessage('Green CAN NOT AFFORD! / Transaction Failed'); return; }
               this.animateNumber('Py', 'add', land.price * 3);
 
               this.animateNumber('Px', 'sub', land.price * 3);
 
             } else {
-              if (this.Px.amount < land.price) { alert('Green CAN NOT AFFORD! / Transaction Failed'); return; }
+              if (this.Px.amount < land.price) { this.showMessage('Green CAN NOT AFFORD! / Transaction Failed'); return; }
               this.animateNumber('Py', 'add', land.price);
 
               this.animateNumber('Px', 'sub', land.price);
@@ -276,7 +292,7 @@ export class AppComponent implements OnInit {
             this.Px.ownedLand.push(land);
           }
         } else {
-          alert('Invalid code / Transaction Failed')
+          this.showMessage('Invalid code / Transaction Failed')
         }
         break;
       default:
@@ -288,7 +304,7 @@ export class AppComponent implements OnInit {
     if (this.noHouse.indexOf(this.Px.pos) >= 0) return;
     if (this.Px.ownedLand.indexOf(land) >= 0 && land.house != 'H') {
       if (this.Px.amount < 2 * land.price) {
-        alert('Insufficient Fund!')
+        this.showMessage('Insufficient Fund!')
         return;
       }
       land.house = 'H';
@@ -304,7 +320,7 @@ export class AppComponent implements OnInit {
     if (this.noHouse.indexOf(this.Py.pos) >= 0) return;
     if (this.Py.ownedLand.indexOf(land) >= 0 && land.house != 'H') {
       if (this.Py.amount < 2 * land.price) {
-        alert('Insufficient Fund!')
+        this.showMessage('Insufficient Fund!')
         return;
       }
       land.house = 'H';
@@ -354,7 +370,7 @@ export class AppComponent implements OnInit {
     }
 
     if (this.Px.amount < payAmount) {
-      alert('Insufficient Fund!')
+      this.showMessage('Insufficient Fund!')
       return;
     }
 
@@ -372,7 +388,7 @@ export class AppComponent implements OnInit {
       payAmount *= 2;
     }
     if (this.Py.amount < payAmount) {
-      alert('Insufficient Fund!')
+      this.showMessage('Insufficient Fund!')
       return;
     }
     this.animateNumber('Px', 'add', payAmount);
@@ -391,7 +407,7 @@ export class AppComponent implements OnInit {
       return;
     }
     if (this.Px.amount < 0 || this.Py.amount < 0) {
-      alert('You Are Out Of Money');
+      this.showMessage('You Are Out Of Money');
       return;
     }
     if (this.result == 2 || this.result == 12) {
