@@ -163,10 +163,23 @@
   top:15%;
    border-radius: 50%;
 }
+@keyframes pulsate {
+  0% {
+    -webkit-transform: scale(1, 1);
+   
+    border: 1px solid yellow;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.2, 1.2);
+   
+    border:10px solid yellowgreen;
+    opacity: 0;
+  }
+}
 
 
-
-
+/* Below Here Are only for old html file*/
 
 
   .horizontal td{
@@ -262,3 +275,4 @@
     left:-5px;
     display: inline-block;
   }
+ 

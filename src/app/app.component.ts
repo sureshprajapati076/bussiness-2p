@@ -625,7 +625,7 @@ export class AppComponent implements OnInit {
     }
     Swal.fire({
       title: 'Are you sure?',
-      text: 'You want to sell Property on ' + land.name + ' TO ' + sellTo + ' !!!',
+      text: 'You want to sell Property on ' + land.name + ' to ' + sellTo + ' !!!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sell',

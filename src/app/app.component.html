@@ -9,7 +9,9 @@
                 <div style="visibility: hidden;" class="top-bottom-circle"></div>
             </div>
             <div class="vertical-horizontal-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/26.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[26]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/26.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==26" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==26" class="bluePlayer"></div>
@@ -21,7 +23,9 @@
 
             </div>
             <div class="vertical-horizontal-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/25.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[25]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/25.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==25" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==25" class="bluePlayer"></div>
@@ -33,7 +37,9 @@
 
             </div>
             <div class="vertical-horizontal-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/24.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[24]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/24.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==24" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==24" class="bluePlayer"></div>
@@ -44,7 +50,9 @@
 
             </div>
             <div class="vertical-horizontal-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/23.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[23]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/23.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==23" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==23" class="bluePlayer"></div>
@@ -55,7 +63,9 @@
 
             </div>
             <div class="vertical-horizontal-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/22.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[22]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/22.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==22" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==22" class="bluePlayer"></div>
@@ -67,7 +77,9 @@
 
             </div>
             <div class="vertical-horizontal-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/21.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[21]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/21.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==21" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==21" class="bluePlayer"></div>
@@ -89,7 +101,9 @@
 
             </div>
             <div class="vertical-horizontal-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/19.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[19]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/19.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==19" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==19" class="bluePlayer"></div>
@@ -131,7 +145,9 @@
 
                 <div [ngStyle]="{'visibility': (data[17].ownedBy != 'bank' && data[17].house.toString()=='') ? 'visible' : 'hidden',
         'background-color':data[17].ownedBy}" class="right-circle"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/17.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[17]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/17.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==17" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==17" class="bluePlayer"></div>
@@ -145,7 +161,9 @@
             </div>
             <div></div>
             <div class="horizontal-vertical-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/29.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[29]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/29.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==29" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==29" class="bluePlayer"></div>
@@ -164,7 +182,9 @@
 
                 <div [ngStyle]="{'visibility': (data[16].ownedBy != 'bank' && data[16].house.toString()=='') ? 'visible' : 'hidden',
         'background-color':data[16].ownedBy}" class="right-circle"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/16.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[16]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/16.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==16" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==16" class="bluePlayer"></div>
@@ -178,7 +198,9 @@
             </div>
             <div></div>
             <div class="horizontal-vertical-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/30.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[30]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/30.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==30" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==30" class="bluePlayer"></div>
@@ -197,7 +219,9 @@
 
                 <div [ngStyle]="{'visibility': (data[15].ownedBy != 'bank' && data[15].house.toString()=='') ? 'visible' : 'hidden',
         'background-color':data[15].ownedBy}" class="right-circle"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/15.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[15]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/15.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==15" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==15" class="bluePlayer"></div>
@@ -211,7 +235,9 @@
             </div>
             <div></div>
             <div class="horizontal-vertical-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/31.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[31]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/31.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==31" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==31" class="bluePlayer"></div>
@@ -229,7 +255,9 @@
 
                 <div [ngStyle]="{'visibility': (data[14].ownedBy != 'bank' ) ? 'visible' : 'hidden',
         'background-color':data[14].ownedBy}" class="right-circle"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/14.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[14]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/14.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==14" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==14" class="bluePlayer"></div>
@@ -259,7 +287,9 @@
 
                 <div [ngStyle]="{'visibility': (data[13].ownedBy != 'bank') ? 'visible' : 'hidden',
         'background-color':data[13].ownedBy}" class="right-circle"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/13.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[13]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/13.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==13" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==13" class="bluePlayer"></div>
@@ -272,7 +302,9 @@
             </div>
             <div></div>
             <div class="horizontal-vertical-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/33.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[33]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/33.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==33" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==33" class="bluePlayer"></div>
@@ -290,7 +322,9 @@
 
                 <div [ngStyle]="{'visibility': (data[12].ownedBy != 'bank') ? 'visible' : 'hidden',
         'background-color':data[12].ownedBy}" class="right-circle"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/12.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[12]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/12.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==12" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==12" class="bluePlayer"></div>
@@ -303,7 +337,9 @@
             </div>
             <div></div>
             <div class="horizontal-vertical-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/34.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[34]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/34.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==34" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==34" class="bluePlayer"></div>
@@ -322,7 +358,9 @@
 
                 <div [ngStyle]="{'visibility': (data[11].ownedBy != 'bank' && data[11].house.toString()=='') ? 'visible' : 'hidden',
         'background-color':data[11].ownedBy}" class="right-circle"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/11.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[11]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/11.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==11" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==11" class="bluePlayer"></div>
@@ -336,7 +374,9 @@
             </div>
             <div></div>
             <div class="horizontal-vertical-container">
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/35.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[35]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/35.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==35" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==35" class="bluePlayer"></div>
@@ -355,7 +395,9 @@
 
                 <div [ngStyle]="{'visibility': (data[10].ownedBy != 'bank' && data[10].house.toString()=='') ? 'visible' : 'hidden',
         'background-color':data[10].ownedBy}" class="right-circle"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/10.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[10]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/10.png');"
                     class="horizontal-rectangle">
                     <div *ngIf="Px.pos==10" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==10" class="bluePlayer"></div>
@@ -413,7 +455,9 @@
         'background-color':data[2].ownedBy}" class="top-bottom-circle"></div>
                 <div [ngStyle]="{'visibility': (data[2].ownedBy != 'bank' && data[2].house.toString()=='H') ? 'visible' : 'hidden',
         'border-bottom-color':data[2].ownedBy}" class="triangle-up"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/2.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[2]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/2.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==2" style="top:50%;" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==2" style="top:45%;" class="bluePlayer"></div>
@@ -426,7 +470,9 @@
                 </div>
                 <div [ngStyle]="{'visibility': (data[3].ownedBy != 'bank' && data[3].house.toString()=='H') ? 'visible' : 'hidden',
         'border-bottom-color':data[3].ownedBy}" class="triangle-up"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/3.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[3]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/3.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==3" style="top:50%;" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==3" style="top:45%;" class="bluePlayer"></div>
@@ -434,10 +480,14 @@
             </div>
             <div style="top:-62px" class="vertical-horizontal-container">
                 <div [ngStyle]="{'visibility': (data[4].ownedBy != 'bank' && data[4].house.toString()=='') ? 'visible' : 'hidden',
-        'background-color':data[4].ownedBy}" class="top-bottom-circle"></div>
+        'background-color':data[4].ownedBy 
+    
+    }" class="top-bottom-circle"></div>
                 <div [ngStyle]="{'visibility': (data[4].ownedBy != 'bank' && data[4].house.toString()=='H') ? 'visible' : 'hidden',
         'border-bottom-color':data[4].ownedBy}" class="triangle-up"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/4.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[4]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/4.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==4" style="top:50%;" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==4" style="top:45%;" class="bluePlayer"></div>
@@ -457,7 +507,9 @@
         'background-color':data[6].ownedBy}" class="top-bottom-circle"></div>
                 <div [ngStyle]="{'visibility': (data[6].ownedBy != 'bank' && data[6].house.toString()=='H') ? 'visible' : 'hidden',
         'border-bottom-color':data[6].ownedBy}" class="triangle-up"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/6.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[6]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/6.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==6" style="top:50%;" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==6" style="top:45%;" class="bluePlayer"></div>
@@ -477,7 +529,9 @@
         'background-color':data[8].ownedBy}" class="top-bottom-circle"></div>
                 <div [ngStyle]="{'visibility': (data[8].ownedBy != 'bank' && data[8].house.toString()=='H') ? 'visible' : 'hidden',
         'border-bottom-color':data[8].ownedBy}" class="triangle-up"></div>
-                <div style=" background-size: 100% 100%;background-image: url('assets/pics/8.png');"
+                <div [ngStyle]="{
+                    'animation': (hover[8]==true)? 'pulsate infinite 1s':'none' }"
+                    style=" background-size: 100% 100%;background-image: url('assets/pics/8.png');"
                     class="vertical-rectangle">
                     <div *ngIf="Px.pos==8" style="top:50%;" class="greenPlayer"></div>
                     <div *ngIf="Py.pos==8" style="top:45%;" class="bluePlayer"></div>
@@ -520,7 +574,8 @@
                             <div class="dropdown-item">
                                 <div style="background-color: cornsilk;">Your Properties List</div>
                             </div>
-                            <div style="cursor: pointer; " class="dropdown-item" *ngFor="let land of Px.ownedLand;">
+                            <div (mouseover)="animateBorder(land)" (mouseleave)="removeAnimateBorder(land)"
+                                style="cursor: pointer; " class="dropdown-item" *ngFor="let land of Px.ownedLand;">
                                 <div> {{land.name}}
                                     ${{land.price|number : '.2-2'}}</div>
                                 <div *ngIf="land.house.toString()!=''" style="margin: 0 0 2px 15px;">
@@ -571,7 +626,8 @@
                             <div class="dropdown-item">
                                 <div style="background-color: cornsilk;">Your Properties List</div>
                             </div>
-                            <div style="cursor: pointer; " class="dropdown-item" *ngFor="let land of Py.ownedLand">
+                            <div (mouseover)="animateBorder(land)" (mouseleave)="removeAnimateBorder(land)"
+                                style="cursor: pointer; " class="dropdown-item" *ngFor="let land of Py.ownedLand">
                                 <div> {{land.name}}
                                     ${{land.price|number : '.2-2'}}</div>
                                 <div *ngIf="land.house.toString()!=''" style="margin: 0 0 2px 15px;"><button
