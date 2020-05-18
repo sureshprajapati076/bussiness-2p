@@ -1,3 +1,172 @@
+.vertical-horizontal-container{
+ 
+  width: 60px;
+  
+  height: auto;
+ 
+  position: relative;
+  display: inline-block;
+  margin: 2px;
+
+}
+.square{
+  width: 80px;
+  
+  height: auto;
+ 
+  position: relative;
+  display: inline-block;
+  margin: 2px;
+}
+.corner {
+  border:1px solid black;
+  background: lightblue;
+  width: 80px;
+  height: 80px;
+ 
+}
+
+.top-bottom-circle {
+  background: red;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+ 
+  margin: 2px  auto 2px auto;
+}
+
+.vertical-rectangle {
+  border:1px solid black;
+  background: lightblue;
+  width: 60px;
+  height: 80px;
+}
+
+.horizontal-vertical-container{
+ 
+  height: 60px;
+  top:-33px;
+  width: auto;
+  position: relative;
+  display: inline-block;
+  margin: 2px;
+
+}
+
+.left-circle {
+  background: red;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  
+  display: inline-block;
+  position: absolute;
+  top: 50%; left: 115%;
+  transform: translate(-50%,-50%);
+}
+.right-circle {
+  background: red;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  
+  display: inline-block;
+  position: absolute;
+  top: 50%; left: -15%;
+  transform: translate(-50%,-50%);
+}
+
+.horizontal-rectangle {
+  border:1px solid black;
+  background: lightblue;
+  width: 80px;
+  height: 60px;
+
+  position: relative;
+  display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.triangle-up {
+  margin: 2px  auto 2px auto;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 12%; left: 50%;
+  transform: translate(-50%,-50%);
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid lightblue;
+}
+.triangle-down {
+  margin: 2px  auto 2px auto;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 84%; left: 50%;
+  transform: translate(-50%,-50%);
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 25px solid lightblue;
+}
+.triangle-right {
+  margin: 2px  auto 2px auto;
+  width: 0;
+  height: 0;
+  display: inline-block;
+  position: absolute;
+  top: 50%; left: 115%;
+  transform: translate(-50%,-50%);
+  
+  border-top: 15px solid transparent;
+ border-left: 25px solid lightblue;
+ border-bottom: 15px solid transparent;
+}
+.triangle-left {
+  margin: 2px  auto 2px auto;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%; left: -15%;
+  transform: translate(-50%,-50%);
+  border-top: 15px solid transparent;
+ border-right: 25px solid lightblue;
+ border-bottom: 15px solid transparent;
+}
+
+
+.greenPlayer{
+  position: absolute;
+   width: 35px;
+   height:35px; 
+   background-color: green;
+  left:30%;
+  top:25%;
+   border-radius: 50%;
+}
+.bluePlayer{
+  position: absolute;
+   width: 35px;
+   height:35px; 
+   background-color: blue;
+  left:25%;
+  top:15%;
+   border-radius: 50%;
+}
+
+
+
+
 
 
   .horizontal td{
