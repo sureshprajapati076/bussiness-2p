@@ -15,7 +15,7 @@ export class Player {
     this.pos = 0;
     this.ownedLand = [];
     this.amount = 40000;
-    this.completeOneCircle = true;
+    this.completeOneCircle = false;
   }
 
 }
