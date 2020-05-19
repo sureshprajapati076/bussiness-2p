@@ -124,7 +124,7 @@ export class AppComponent implements OnInit {
     this.data = GameInitialData.data;
     //this.Px.secretKey = prompt('Enter secret key for Green', 'green');  uncomment prompt if you want to create secret key for transaction among players
     // this.Py.secretKey = prompt('Enter secret key for Green', 'blue');
-    this.toastr.success('Game Loaded... Good Luck for Game!!!', '');
+    this.toastr.success('Good Luck for Game!!!', 'Game Loaded');
 
 
   }
