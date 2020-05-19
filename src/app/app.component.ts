@@ -461,6 +461,7 @@ export class AppComponent implements OnInit {
     this.result = rollDiceWithoutValues();
 
 
+
     this.P1 = true;
     this.P2 = true;
     setTimeout(() => { this.animate1() }, 1000)
@@ -521,9 +522,12 @@ export class AppComponent implements OnInit {
         if (this.Px.ownedLand.indexOf(land) >= 0) {
           this.showHomeOption = true;
         }
-        if (this.showHomeOption == true && this.noHouse.indexOf(this.Px.pos) >= 0 || land.house == 'H') {
+        if (this.showHomeOption == true && this.noHouse.indexOf(this.Px.pos) >= 0) {
           this.showHomeOption = false;
           this.finish();
+        }
+        if (land.house == 'H') {
+          this.showHomeOption = false;
         }
 
 
@@ -576,9 +580,12 @@ export class AppComponent implements OnInit {
         if (this.Py.ownedLand.indexOf(land) >= 0) {
           this.showHomeOption = true;
         }
-        if (this.showHomeOption == true && this.noHouse.indexOf(this.Py.pos) >= 0 || land.house == 'H') {
+        if (this.showHomeOption == true && this.noHouse.indexOf(this.Py.pos) >= 0) {
           this.showHomeOption = false;
           this.finish();
+        }
+        if (land.house == 'H') {
+          this.showHomeOption = false;
         }
 
 
