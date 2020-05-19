@@ -216,7 +216,7 @@ export class AppComponent implements OnInit {
       case 'SELL_BANK_G':
         index = this.Px.ownedLand.indexOf(land);
         if (index > -1) {
-          if (land.house == 'H') {
+          if (land.house.toString() == 'H') {
             this.animateNumber('Px', 'add', land.price * 2.7);
           } else {
             this.animateNumber('Px', 'add', land.price * 0.9);
@@ -232,7 +232,7 @@ export class AppComponent implements OnInit {
         // if (this.Py.secretKey === secret) {
         index = this.Px.ownedLand.indexOf(land);
         if (index > -1) {
-          if (land.house == 'H') {
+          if (land.house.toString() == 'H') {
             if (this.Py.amount < land.price * 3) { this.showMessage('Blue CAN NOT AFFORD! / Transaction Failed'); return; }
             this.animateNumber('Px', 'add', land.price * 3);
             this.animateNumber('Py', 'sub', land.price * 3);
@@ -265,7 +265,7 @@ export class AppComponent implements OnInit {
       case 'SELL_BANK_B':
         index = this.Py.ownedLand.indexOf(land);
         if (index > -1) {
-          if (land.house == 'H') {
+          if (land.house.toString() == 'H') {
             this.animateNumber('Py', 'add', land.price * 2.7);
 
           } else {
@@ -282,7 +282,7 @@ export class AppComponent implements OnInit {
         // if (this.Px.secretKey === secretG) {
         index = this.Py.ownedLand.indexOf(land);
         if (index > -1) {
-          if (land.house == 'H') {
+          if (land.house.toString() == 'H') {
             if (this.Px.amount < land.price * 3) { this.showMessage('Green CAN NOT AFFORD! / Transaction Failed'); return; }
             this.animateNumber('Py', 'add', land.price * 3);
 
@@ -313,7 +313,7 @@ export class AppComponent implements OnInit {
   buildHouseX() {
     let land = this.data[this.Px.pos]
     if (this.noHouse.indexOf(this.Px.pos) >= 0) return;
-    if (this.Px.ownedLand.indexOf(land) >= 0 && land.house != 'H') {
+    if (this.Px.ownedLand.indexOf(land) >= 0 && land.house.toString() != 'H') {
       if (this.Px.amount < 2 * land.price) {
         this.showMessage('Insufficient Fund!')
         return;
@@ -329,7 +329,7 @@ export class AppComponent implements OnInit {
   buildHouseY() {
     let land = this.data[this.Py.pos]
     if (this.noHouse.indexOf(this.Py.pos) >= 0) return;
-    if (this.Py.ownedLand.indexOf(land) >= 0 && land.house != 'H') {
+    if (this.Py.ownedLand.indexOf(land) >= 0 && land.house.toString() != 'H') {
       if (this.Py.amount < 2 * land.price) {
         this.showMessage('Insufficient Fund!')
         return;
@@ -360,7 +360,7 @@ export class AppComponent implements OnInit {
   payRentToY() {
     let land = this.data[this.Px.pos]
     let payAmount = land.price;
-    if (land.house == 'H') {
+    if (land.house.toString() == 'H') {
       payAmount *= 2;
     }
 
@@ -379,7 +379,7 @@ export class AppComponent implements OnInit {
   payRentToX() {
     let land = this.data[this.Py.pos]
     let payAmount = land.price;
-    if (land.house == 'H') {
+    if (land.house.toString() == 'H') {
       payAmount *= 2;
     }
     if (this.Py.amount < payAmount) {
@@ -526,7 +526,7 @@ export class AppComponent implements OnInit {
           this.showHomeOption = false;
           this.finish();
         }
-        if (this.showHomeOption == true && land.house == 'H') {
+        if (this.showHomeOption == true && land.house.toString() == 'H') {
           this.showHomeOption = false;
           this.finish();
         }
@@ -585,7 +585,7 @@ export class AppComponent implements OnInit {
           this.showHomeOption = false;
           this.finish();
         }
-        if (this.showHomeOption == true && land.house == 'H') {
+        if (this.showHomeOption == true && land.house.toString() == 'H') {
           this.showHomeOption = false;
           this.finish();
         }
