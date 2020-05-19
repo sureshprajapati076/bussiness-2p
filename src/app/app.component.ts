@@ -526,7 +526,7 @@ export class AppComponent implements OnInit {
           this.showHomeOption = false;
           this.finish();
         }
-        if (land.house == 'H') {
+        if (this.showHomeOption == true && land.house == 'H') {
           this.showHomeOption = false;
         }
 
@@ -584,7 +584,7 @@ export class AppComponent implements OnInit {
           this.showHomeOption = false;
           this.finish();
         }
-        if (land.house == 'H') {
+        if (this.showHomeOption == true && land.house == 'H') {
           this.showHomeOption = false;
         }
 
