@@ -341,33 +341,17 @@ export class AppComponent implements OnInit {
     }
 
   }
-  checkIfOwnedByX() {
-    let land = this.data[this.Px.pos]
+  checkIfOwnedByX(pos) {
+    let land = this.data[pos]
     if (this.Px.ownedLand.indexOf(land) >= 0)
       return true;
     else
       return false;
 
   }
-  checkIfOwnedByY() {
-    let land = this.data[this.Py.pos]
+  checkIfOwnedByY(pos) {
+    let land = this.data[pos]
     if (this.Py.ownedLand.indexOf(land) >= 0)
-      return true;
-    else
-      return false;
-
-  }
-  checkIfHouseOfX() {
-    let land = this.data[this.Px.pos]
-    if (this.Px.ownedLand.indexOf(land) >= 0 && land.house == 'H')
-      return true;
-    else
-      return false;
-
-  }
-  checkIfHouseOfY() {
-    let land = this.data[this.Py.pos]
-    if (this.Py.ownedLand.indexOf(land) >= 0 && land.house == 'H')
       return true;
     else
       return false;
@@ -533,11 +517,20 @@ export class AppComponent implements OnInit {
       setTimeout(() => {
         let land = this.data[this.Px.pos];
         this.hideBoth = false;
+        this.showHomeOption = false;
         if (this.Px.ownedLand.indexOf(land) >= 0) {
           this.showHomeOption = true;
-        } else {
-          this.showHomeOption = false;
         }
+        if (this.showHomeOption == true && this.noHouse.indexOf(this.Px.pos) >= 0 || land.house == 'H') {
+          this.showHomeOption = false;
+          this.finish();
+        }
+
+
+
+
+
+
         if (this.Py.ownedLand.indexOf(land) >= 0) {
           this.showPayRent = true;
         } else {
@@ -579,11 +572,16 @@ export class AppComponent implements OnInit {
       setTimeout(() => {
         let land = this.data[this.Py.pos];
         this.hideBoth = false;
+        this.showHomeOption = false;
         if (this.Py.ownedLand.indexOf(land) >= 0) {
           this.showHomeOption = true;
-        } else {
-          this.showHomeOption = false;
         }
+        if (this.showHomeOption == true && this.noHouse.indexOf(this.Py.pos) >= 0 || land.house == 'H') {
+          this.showHomeOption = false;
+          this.finish();
+        }
+
+
         if (this.Px.ownedLand.indexOf(land) >= 0) {
           this.showPayRent = true;
         } else {

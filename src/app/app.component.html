@@ -555,15 +555,14 @@
             <ng-template #ShowPlayerOptions>
 
                 <div *ngIf="turn==false; else PlayerY">
-                    <div style="padding-bottom: 10px;" *ngIf="!checkIfOwnedByX()">
-                        <button type="button" class="btn btn-success" [disabled]="checkIfOwnedByX()"
-                            (click)="buyX()">Buy
+                    <div style="padding-bottom: 10px;" *ngIf="!checkIfOwnedByX(Px.pos) && !checkIfOwnedByY(Px.pos)">
+                        <button type="button" class="btn btn-success" (click)="buyX()">Buy
                             This Property</button></div>
                     <div style="padding-bottom: 10px;" *ngIf="showHomeOption"><button type="button"
-                            class="btn btn-success" [disabled]="!showHomeOption" (click)="buildHouseX()">Build
+                            class="btn btn-success" (click)="buildHouseX()">Build
                             House</button></div>
                     <div style="padding-bottom: 10px;" *ngIf="showPayRent"> <button type="button"
-                            class="btn btn-success" [disabled]="!showPayRent" (click)="payRentToY()">Pay
+                            class="btn btn-success" (click)="payRentToY()">Pay
                             Rent</button></div>
                     <div *ngIf="Px.ownedLand.length>0" style="padding-bottom: 10px;" class="btn-group">
                         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
@@ -604,14 +603,14 @@
 
                 </div>
                 <ng-template #PlayerY>
-                    <div style="padding-bottom: 10px;" *ngIf="!checkIfOwnedByY()"><button type="button"
-                            class="btn btn-primary" [disabled]="checkIfOwnedByY()" (click)="buyY()">Buy
+                    <div style="padding-bottom: 10px;" *ngIf="!checkIfOwnedByY(Py.pos) && !checkIfOwnedByX(Py.pos)">
+                        <button type="button" class="btn btn-primary" (click)="buyY()">Buy
                             This Property</button></div>
                     <div style="padding-bottom: 10px;" *ngIf="showHomeOption"> <button type="button"
-                            class="btn btn-primary" [disabled]="!showHomeOption" (click)="buildHouseY()">Build
+                            class="btn btn-primary" (click)="buildHouseY()">Build
                             House</button></div>
                     <div style="padding-bottom: 10px;" *ngIf="showPayRent"> <button type="button"
-                            class="btn btn-primary" [disabled]="!showPayRent" (click)="payRentToX()">Pay
+                            class="btn btn-primary" (click)="payRentToX()">Pay
                             Rent</button></div>
 
 
@@ -664,9 +663,10 @@
 
 
 
-                <div style="padding-bottom: 10px;">
+                <div *ngIf="!showPayRent" style="padding-bottom: 10px;">
                     <button type="button" class="btn btn-warning" (click)="finish()">No Transaction
-                    </button></div>
+                    </button>
+                </div>
             </ng-template>
 
 
