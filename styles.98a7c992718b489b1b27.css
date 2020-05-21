@@ -1,4 +1,4 @@
-.block{display:flex;position:relative;justify-content:center}.dice-count,.dice-count input{font-size:20px}.box{width:500px;border:1px solid #000;text-align:center;height:300px;display:flex;flex-direction:column;justify-content:space-between;margin:5px}#dice-box1,#dice-box2{height:200px}.roll{height:80px;width:200px;border-radius:10px;background-color:green;color:#fff;font-size:20px;margin:10px 0}/*!
+.block{display:flex;position:relative;justify-content:center}.dice-count,.dice-count input{font-size:20px}.box{width:500px;border:1px solid #000;text-align:center;height:300px;display:flex;flex-direction:column;justify-content:space-between;margin:5px}#dice-box1{height:165px}#dice-box2{height:200px}.roll{height:80px;width:200px;border-radius:10px;background-color:green;color:#fff;font-size:20px;margin:10px 0}/*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
  * Copyright 2011-2019 Twitter, Inc.
