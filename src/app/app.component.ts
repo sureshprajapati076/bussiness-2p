@@ -34,6 +34,7 @@ export class Land {
 export class AppComponent implements OnInit {
 
   appTitle = 'Business-2 Player';
+  rollBothOff: boolean;
   result: number
 
   hideVideo: boolean;
@@ -69,6 +70,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
+    this.rollBothOff = false;
     this.sellStatus = false;
 
     this.hideVideo = false;
@@ -417,6 +419,8 @@ export class AppComponent implements OnInit {
     }
 
     this.hideBoth = true;
+    this.rollBothOff = false;
+
 
     /*
  this.hideBoth = true;
@@ -457,6 +461,7 @@ export class AppComponent implements OnInit {
 
 
   roll1() {
+    this.rollBothOff = true;
 
     this.result = rollDiceWithoutValues();
 
@@ -473,6 +478,7 @@ export class AppComponent implements OnInit {
 
   }
   roll2() {
+    this.rollBothOff = true;
     this.P1 = true;
     this.P2 = true
 

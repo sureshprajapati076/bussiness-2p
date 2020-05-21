@@ -719,18 +719,20 @@
 
     </h3>
     <hr />
+    <div *ngIf="rollBothOff==false">
+        <div *ngIf="turn==true; else goblue">
+            <button type="button" class="btn btn-success" [disabled]="P1==true" (click)="roll1()">Go
+                GREEN</button>
+        </div>
+        <ng-template #goblue>
 
-    <div *ngIf="turn==true; else goblue">
-        <button type="button" class="btn btn-success" [disabled]="P1==true" (click)="roll1()">Go
-            GREEN</button>
+
+
+            <button type="button" class="btn btn-primary" [disabled]="P2==true" (click)="roll2()">Go
+                BLUE</button>
+        </ng-template>
     </div>
-    <ng-template #goblue>
 
-
-
-        <button type="button" class="btn btn-primary" [disabled]="P2==true" (click)="roll2()">Go
-            BLUE</button>
-    </ng-template>
 
     <div id="dice-box1"></div>
 
