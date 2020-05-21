@@ -1,3 +1,9 @@
+.hide{
+  visibility: hidden;
+}
+.show{
+  visibility: visible;
+}
 .vertical-horizontal-container{
  
   width: 60px;

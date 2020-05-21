@@ -719,7 +719,7 @@
 
     </h3>
     <hr />
-    <div *ngIf="rollBothOff==false">
+    <div [ngClass]="(rollBothOff==true)?'hide':'show'">
         <div *ngIf="turn==true; else goblue">
             <button type="button" class="btn btn-success" [disabled]="P1==true" (click)="roll1()">Go
                 GREEN</button>
