@@ -472,6 +472,7 @@ export class AppComponent implements OnInit {
 
 
 
+
     this.P1 = true;
     this.P2 = true;
     setTimeout(() => { this.animate1() }, 1000)
@@ -488,6 +489,7 @@ export class AppComponent implements OnInit {
     this.P2 = true
 
     this.result = rollDiceWithoutValues();
+
 
     setTimeout(() => { this.animate2() }, 1000)
 
@@ -724,6 +726,7 @@ export class AppComponent implements OnInit {
     }
     if (this.Px.completeOneCircle == false) {
       this.finish();
+      return;
     }
 
 
@@ -736,6 +739,8 @@ export class AppComponent implements OnInit {
 
         } else if (pos == 7 || pos == 20) {
           this.luckOrGanarajyaPopUp('luck', 'Px');
+        } else {
+          this.finish();
         }
 
       }, 200 * this.result);
@@ -851,6 +856,7 @@ export class AppComponent implements OnInit {
 
     if (this.Py.completeOneCircle == false) {
       this.finish();
+      return;
     }
 
 
@@ -863,6 +869,8 @@ export class AppComponent implements OnInit {
 
         } else if (pos == 7 || pos == 20) {
           this.luckOrGanarajyaPopUp('luck', 'Py');
+        } else {
+          this.finish();
         }
 
       }, 200 * this.result);
