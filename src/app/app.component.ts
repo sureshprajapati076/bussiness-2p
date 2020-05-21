@@ -16,7 +16,7 @@ export class Player {
     this.pos = 0;
     this.ownedLand = [];
     this.amount = 40000;
-    this.completeOneCircle = true;
+    this.completeOneCircle = false;
   }
 
 }
@@ -517,9 +517,54 @@ export class AppComponent implements OnInit {
 
 
     } else if (this.rewardOrTaxes.indexOf(pos) >= 0) {
-      this.Px.amount += this.data[pos].price;
-      if (this.Px.amount < 0) this.Px.amount = 0;
-      this.finish();
+      setTimeout(() => {
+        let title, text, icon, payOrReceive;
+        if (pos == 5 || pos == 32) {
+          title = 'Tax Department';
+          text = 'You need to pay tax of $50';
+          icon = 'warning';
+          payOrReceive = 'Pay';
+        }
+
+        if (pos == 9) {
+          title = 'Jailer Says';
+          text = 'You need to pay $50';
+          icon = 'warning';
+          payOrReceive = 'Pay';
+        }
+        if (pos == 0) {
+          title = 'Good Player';
+          text = 'You received Award of $250';
+          icon = 'success';
+          payOrReceive = 'Receive';
+        }
+
+
+        Swal.fire({
+          title: title,
+          text: text,
+          icon: icon,
+          allowOutsideClick: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: payOrReceive
+        }).then((result) => {
+          // this.Px.amount += this.data[pos].price;
+          if (this.Px.amount <= 50 && pos != 0) this.Px.amount = 0;
+          else if (pos == 0) {
+            this.animateNumber('Px', 'add', this.data[pos].price);
+          } else {
+            this.animateNumber('Px', 'sub', this.data[pos].price);
+          }
+
+
+
+
+          this.finish();
+        })
+
+
+      }, this.result * 200);
 
 
     }
@@ -576,9 +621,55 @@ export class AppComponent implements OnInit {
 
 
     } else if (this.rewardOrTaxes.indexOf(pos) >= 0) {
-      this.Py.amount += this.data[pos].price;
-      if (this.Py.amount < 0) this.Py.amount = 0;
-      this.finish();
+
+      setTimeout(() => {
+        let title, text, icon, payOrReceive;
+        if (pos == 5 || pos == 32) {
+          title = 'Tax Department';
+          text = 'You need to pay tax of $50';
+          icon = 'warning';
+          payOrReceive = 'Pay';
+        }
+
+        if (pos == 9) {
+          title = 'Jailer Says';
+          text = 'You need to pay $50';
+          icon = 'warning';
+          payOrReceive = 'Pay';
+        }
+        if (pos == 0) {
+          title = 'Good Player';
+          text = 'You received Award of $250';
+          icon = 'success';
+          payOrReceive = 'Receive';
+        }
+
+
+        Swal.fire({
+          title: title,
+          text: text,
+          icon: icon,
+          allowOutsideClick: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: payOrReceive,
+        }).then((result) => {
+          // this.Px.amount += this.data[pos].price;
+          if (this.Py.amount <= 50 && pos != 0) this.Py.amount = 0;
+          else if (pos == 0) {
+            this.animateNumber('Py', 'add', this.data[pos].price);
+          } else {
+            this.animateNumber('Py', 'sub', this.data[pos].price);
+          }
+
+
+
+
+          this.finish();
+        })
+
+
+      }, this.result * 200);
 
 
     }
