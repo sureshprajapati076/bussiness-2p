@@ -151,7 +151,7 @@
   height: 0;
   display: inline-block;
   position: absolute;
-  top: 50%; left: 115%;
+  top: 50%; left: 118%;
   transform: translate(-50%,-50%);
   
   border-top: 15px solid transparent;
@@ -163,7 +163,7 @@
   width: 0;
   height: 0;
   position: absolute;
-  top: 50%; left: -15%;
+  top: 50%; left: -17%;
   transform: translate(-50%,-50%);
   border-top: 15px solid transparent;
  border-right: 25px solid lightblue;
@@ -173,8 +173,8 @@
 
 .greenPlayer{
   position: absolute;
-   width: 35px;
-   height:35px; 
+   width: 30px;
+   height:30px; 
    background-color: green;
   left:30%;
   top:25%;
@@ -182,11 +182,11 @@
 }
 .bluePlayer{
   position: absolute;
-   width: 35px;
-   height:35px; 
+   width: 30px;
+   height:30px; 
    background-color: blue;
-  left:25%;
-  top:15%;
+  left:28%;
+  top:25%;
    border-radius: 50%;
 }
 @keyframes pulsate {
