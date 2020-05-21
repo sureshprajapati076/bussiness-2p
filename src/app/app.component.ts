@@ -16,7 +16,7 @@ export class Player {
     this.pos = 0;
     this.ownedLand = [];
     this.amount = 40000;
-    this.completeOneCircle = false;
+    this.completeOneCircle = true;
   }
 
 }
@@ -68,6 +68,7 @@ export class AppComponent implements OnInit {
   drag() {
     dragNow();
   }
+
   constructor(private toastr: ToastrService) {
 
   }
@@ -497,6 +498,215 @@ export class AppComponent implements OnInit {
 
 
   }
+
+  luckOrGanarajyaPopUp(status, player) {
+    let pos = this.result;
+    let text, title;
+    if (status == 'luck') {
+      title = 'Your Luck!'
+      if (pos == 2) {
+        text = 'Go to Start'
+      } else if (pos == 3) {
+        text = 'Step Forward 6 Steps'
+      } else if (pos == 4) {
+        text = 'Go to Jail'
+      } else if (pos == 5) {
+        text = 'Go Back 5 Steps'
+      } else if (pos == 6) {
+        text = "It's your turn again"
+      } else if (pos == 7) {
+        text = 'Go to Milkway'
+      } else if (pos == 8) {
+        text = 'Go to Post Office'
+      } else if (pos == 9) {
+        text = 'Go to Kanpur'
+      } else if (pos == 10) {
+        text = 'You Receive $2000'
+      } else if (pos == 11) {
+        text = 'Go to Business Hour'
+      } else if (pos == 12) {
+        text = 'You Receive $5000'
+      }
+    } else {
+      title = 'Your State Says'
+      if (pos == 2) {
+        text = 'You Receive $2000 from State'
+      } else if (pos == 3) {
+        text = 'You Receive $2500 from State'
+      } else if (pos == 4) {
+        text = 'You Receive $3000 from State'
+      } else if (pos == 5) {
+        text = 'You Receive $3500 from State'
+      } else if (pos == 6) {
+        text = 'You Receive $4000 from State'
+      } else if (pos == 7) {
+        text = 'You Receive $3500 from State'
+      } else if (pos == 8) {
+        text = 'You Receive $2500 from State'
+      } else if (pos == 9) {
+        text = 'You Receive $2000 from State'
+      } else if (pos == 10) {
+        text = 'You Receive $2500 from State'
+      } else if (pos == 11) {
+        text = 'You Receive $3500 from State'
+      } else if (pos == 12) {
+        text = 'You Receive $4000 from State'
+      }
+
+    }
+
+
+
+
+
+
+
+
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: 'success',
+      allowOutsideClick: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok',
+    }).then((result) => {
+
+      if (player == 'Py') {
+        if (status == 'luck') {
+          if (pos == 2) {
+            this.Py.pos = 0;
+          } else if (pos == 3) {
+            this.Py.pos += 6;
+          } else if (pos == 4) {
+            this.Py.pos = 9;
+          } else if (pos == 5) {
+            this.Py.pos -= 5;
+          } else if (pos == 6) {
+            this.turn = !this.turn;
+          } else if (pos == 7) {
+            this.Py.pos = 18;
+          } else if (pos == 8) {
+            this.Py.pos = 14;
+          } else if (pos == 9) {
+            this.Py.pos = 34
+          } else if (pos == 10) {
+            this.animateNumber('Py', 'add', 2000);
+          } else if (pos == 11) {
+            this.Py.pos = 27;
+          } else if (pos == 12) {
+            this.animateNumber('Py', 'add', 5000);
+          }
+        } else {
+          if (pos == 2) {
+            this.animateNumber('Py', 'add', 2000);
+          } else if (pos == 3) {
+            this.animateNumber('Py', 'add', 2500);
+          } else if (pos == 4) {
+            this.animateNumber('Py', 'add', 3000);
+          } else if (pos == 5) {
+            this.animateNumber('Py', 'add', 3500);
+          } else if (pos == 6) {
+            this.animateNumber('Py', 'add', 4000);
+          } else if (pos == 7) {
+            this.animateNumber('Py', 'add', 3500);
+          } else if (pos == 8) {
+            this.animateNumber('Py', 'add', 2500);
+          } else if (pos == 9) {
+            this.animateNumber('Py', 'add', 2000);
+          } else if (pos == 10) {
+            this.animateNumber('Py', 'add', 2500);
+          } else if (pos == 11) {
+            this.animateNumber('Py', 'add', 3500);
+          } else if (pos == 12) {
+            this.animateNumber('Py', 'add', 4000);
+          }
+
+        }
+      } else {
+
+
+
+
+
+
+
+
+        if (status == 'luck') {
+          if (pos == 2) {
+            this.Px.pos = 0;
+          } else if (pos == 3) {
+            this.Px.pos += 6;
+          } else if (pos == 4) {
+            this.Px.pos = 9;
+          } else if (pos == 5) {
+            this.Px.pos -= 5;
+          } else if (pos == 6) {
+            this.turn = !this.turn;
+          } else if (pos == 7) {
+            this.Px.pos = 18;
+          } else if (pos == 8) {
+            this.Px.pos = 14;
+          } else if (pos == 9) {
+            this.Px.pos = 34
+          } else if (pos == 10) {
+            this.animateNumber('Px', 'add', 2000);
+          } else if (pos == 11) {
+            this.Px.pos = 27;
+          } else if (pos == 12) {
+            this.animateNumber('Px', 'add', 5000);
+          }
+        } else {
+          if (pos == 2) {
+            this.animateNumber('Px', 'add', 2000);
+          } else if (pos == 3) {
+            this.animateNumber('Px', 'add', 2500);
+          } else if (pos == 4) {
+            this.animateNumber('Px', 'add', 3000);
+          } else if (pos == 5) {
+            this.animateNumber('Px', 'add', 3500);
+          } else if (pos == 6) {
+            this.animateNumber('Px', 'add', 4000);
+          } else if (pos == 7) {
+            this.animateNumber('Px', 'add', 3500);
+          } else if (pos == 8) {
+            this.animateNumber('Px', 'add', 2500);
+          } else if (pos == 9) {
+            this.animateNumber('Px', 'add', 2000);
+          } else if (pos == 10) {
+            this.animateNumber('Px', 'add', 2500);
+          } else if (pos == 11) {
+            this.animateNumber('Px', 'add', 3500);
+          } else if (pos == 12) {
+            this.animateNumber('Px', 'add', 4000);
+          }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+      }
+
+      this.finish();
+
+
+
+
+
+    })
+  }
+
+
+
   animate1() {
     let pos = (this.Px.pos + this.result) % 36;
 
@@ -512,8 +722,28 @@ export class AppComponent implements OnInit {
         this.Px.pos = (this.Px.pos + 1) % 36;
       }, 200 * i);
     }
-    if (this.Px.completeOneCircle == false || this.noActionNeeded.indexOf(pos) >= 0) {
+    if (this.Px.completeOneCircle == false) {
       this.finish();
+    }
+
+
+    if (this.noActionNeeded.indexOf(pos) >= 0) {
+
+
+      setTimeout(() => {
+        if (pos == 1 || pos == 28) {
+          this.luckOrGanarajyaPopUp('state', 'Px');
+
+        } else if (pos == 7 || pos == 20) {
+          this.luckOrGanarajyaPopUp('luck', 'Px');
+        }
+
+      }, 200 * this.result);
+
+
+
+
+
 
 
     } else if (this.rewardOrTaxes.indexOf(pos) >= 0) {
@@ -616,11 +846,35 @@ export class AppComponent implements OnInit {
         this.Py.pos = (this.Py.pos + 1) % 36;
       }, 200 * i);
     }
-    if (this.Py.completeOneCircle == false || this.noActionNeeded.indexOf(pos) >= 0) {
+
+
+
+    if (this.Py.completeOneCircle == false) {
       this.finish();
+    }
 
 
-    } else if (this.rewardOrTaxes.indexOf(pos) >= 0) {
+    if (this.noActionNeeded.indexOf(pos) >= 0) {
+
+
+      setTimeout(() => {
+        if (pos == 1 || pos == 28) {
+          this.luckOrGanarajyaPopUp('state', 'Py');
+
+        } else if (pos == 7 || pos == 20) {
+          this.luckOrGanarajyaPopUp('luck', 'Py');
+        }
+
+      }, 200 * this.result);
+
+
+
+
+
+
+
+    }
+    else if (this.rewardOrTaxes.indexOf(pos) >= 0) {
 
       setTimeout(() => {
         let title, text, icon, payOrReceive;
