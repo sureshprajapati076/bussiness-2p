@@ -179,14 +179,16 @@
   left:30%;
   top:25%;
    border-radius: 50%;
+   opacity: 0.8;
 }
 .bluePlayer{
   position: absolute;
+  opacity: 0.8;
    width: 30px;
    height:30px; 
    background-color: blue;
   left:28%;
-  top:25%;
+  top:18%;
    border-radius: 50%;
 }
 @keyframes pulsate {
