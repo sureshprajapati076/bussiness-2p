@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 declare const rollDiceWithoutValues: any;
+declare const dragNow: any;
 
 export class Player {
   pos: number;
@@ -63,6 +64,9 @@ export class AppComponent implements OnInit {
     this.toastr.warning('<span>' + message + '</span>', "", { enableHtml: true, timeOut: 2000, closeButton: true, positionClass: "toast-top-right" });
 
 
+  }
+  drag() {
+    dragNow();
   }
   constructor(private toastr: ToastrService) {
 
